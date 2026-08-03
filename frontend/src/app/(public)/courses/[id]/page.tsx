@@ -42,6 +42,16 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
     resolver: zodResolver(registrationSchema),
   });
 
+  const [isBraveUser, setIsBraveUser] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && typeof (navigator as any).brave !== "undefined") {
+      (navigator as any).brave.isBrave?.().then((brave: boolean) => {
+        if (brave) setIsBraveUser(true);
+      });
+    }
+  }, []);
+
   const cleanupModalAndScroll = () => {
     if (typeof document !== "undefined") {
       document.body.style.overflow = "";
@@ -139,14 +149,19 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  };
 
       if (typeof window === "undefined" || !window.Razorpay) {
-        throw new Error("Razorpay SDK failed to load. Please check your internet connection or disable adblockers.");
+        throw new Error("Razorpay SDK failed to load. Please check your internet connection or disable adblockers/Brave Shields.");
       }
 
       const rzp = new window.Razorpay(options);
       rzp.on("payment.failed", function (response: any) {
-        setErrorMsg(response.error.description || "Payment failed");
+        const desc = response.error?.description || "Payment failed";
+        if (desc.toLowerCase().includes("browser") || desc.toLowerCase().includes("support") || isBraveUser) {
+          setErrorMsg("Razorpay was blocked by Brave Shields / AdBlocker. Please click the Lion icon in your URL bar, disable Shields for this site, and try again.");
+        } else {
+          setErrorMsg(desc);
+        }
         setSubmitting(false);
-        setShowCheckoutModal(false);
+        setShowCheckoutModal(true);
         cleanupModalAndScroll();
       });
       rzp.open();
@@ -295,11 +310,22 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  </button>
  </div>
 
- {errorMsg && (
- <div className="p-3 bg-red-500/10 border border-red-500/30 text-red-400 text-xs">
- {errorMsg}
- </div>
- )}
+  {isBraveUser && (
+    <div className="p-3 bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs space-y-1">
+      <div className="font-bold flex items-center gap-1.5 text-amber-400">
+        <ShieldCheck className="w-4 h-4" /> Brave Shields Notice
+      </div>
+      <p className="leading-relaxed">
+        If Razorpay displays <em>&quot;Browser not supported&quot;</em>, please click the <strong>Lion / Shield icon</strong> in your browser address bar and turn <strong>Shields DOWN</strong> for this site.
+      </p>
+    </div>
+  )}
+
+  {errorMsg && (
+  <div className="p-3 bg-red-500/10 border border-red-500/30 text-red-400 text-xs">
+  {errorMsg}
+  </div>
+  )}
 
           <form onSubmit={handleSubmit(handleCreateOrder)} className="space-y-4 text-sm">
             <div className="space-y-1.5">
