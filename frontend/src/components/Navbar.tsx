@@ -11,6 +11,13 @@ export default function Navbar() {
  const pathname = usePathname();
  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+ useEffect(() => {
+   // Ensure scrolling is always enabled and any lingering modal/Razorpay backdrop is cleaned up on route change
+   document.body.style.overflow = "";
+   document.documentElement.style.overflow = "";
+   document.querySelectorAll(".razorpay-container").forEach((el) => el.remove());
+ }, [pathname]);
+
  const isActive = (path: string) => pathname === path;
 
  return (

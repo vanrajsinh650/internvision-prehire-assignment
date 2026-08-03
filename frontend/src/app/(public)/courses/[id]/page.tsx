@@ -42,6 +42,25 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
     resolver: zodResolver(registrationSchema),
   });
 
+  const cleanupModalAndScroll = () => {
+    if (typeof document !== "undefined") {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      document.querySelectorAll(".razorpay-container").forEach((el) => el.remove());
+    }
+  };
+
+  useEffect(() => {
+    if (showCheckoutModal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      cleanupModalAndScroll();
+    }
+    return () => {
+      cleanupModalAndScroll();
+    };
+  }, [showCheckoutModal]);
+
  useEffect(() => {
  fetchCourseDetails();
  }, [resolvedParams.id]);
@@ -103,8 +122,10 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  }),
  });
 
+ cleanupModalAndScroll();
  router.push(`/success?payment_id=${response.razorpay_payment_id}&order_id=${response.razorpay_order_id}&course=${encodeURIComponent(course.title)}`);
  } catch (err: any) {
+ cleanupModalAndScroll();
  router.push(`/error?message=${encodeURIComponent(err.message ||"Signature verification failed")}`);
  }
  },
@@ -112,6 +133,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  ondismiss: function () {
  setSubmitting(false);
  setShowCheckoutModal(false);
+ cleanupModalAndScroll();
  },
  },
  };
@@ -124,11 +146,14 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
       rzp.on("payment.failed", function (response: any) {
         setErrorMsg(response.error.description || "Payment failed");
         setSubmitting(false);
+        setShowCheckoutModal(false);
+        cleanupModalAndScroll();
       });
       rzp.open();
     } catch (err: any) {
       setErrorMsg(err.message || "Failed to initialize payment order.");
       setSubmitting(false);
+      cleanupModalAndScroll();
     }
  };
 
