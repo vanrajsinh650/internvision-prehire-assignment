@@ -22,7 +22,9 @@ export default function Navbar() {
  >
  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
  <Link href="/"className="flex items-center gap-2 font-bold text-xl tracking-tight">
- <Image src="/logo.jpg" alt="InternVision Logo" width={160} height={40} className="h-8 w-auto object-contain mix-blend-screen invert hue-rotate-180 brightness-110" />
+ <div className="bg-white p-1 rounded-md flex items-center justify-center">
+ <Image src="/logo.jpg" alt="InternVision Logo" width={160} height={40} className="h-7 w-auto object-contain" />
+ </div>
  </Link>
 
  <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
