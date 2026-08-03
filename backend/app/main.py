@@ -6,7 +6,9 @@ from sqlalchemy.orm import Session
 
 from app.core.config import settings
 from app.core.middleware import LoggingAndRequestIDMiddleware
-from app.shared.database import Base, engine, get_db
+from app.auth.models import Admin
+from app.shared.security import get_password_hash
+from app.shared.database import Base, engine, get_db, SessionLocal
 from app.auth.router import router as auth_router
 from app.courses.router import router as courses_router
 from app.internship.router import router as internship_router
@@ -21,6 +23,22 @@ app = FastAPI(
     version=settings.VERSION,
     openapi_url="/api/openapi.json"
 )
+
+@app.on_event("startup")
+def startup_event():
+    db = SessionLocal()
+    try:
+        admin = db.query(Admin).filter(Admin.email == "admin@internvision.tech").first()
+        if not admin:
+            new_admin = Admin(
+                email="admin@internvision.tech",
+                hashed_password=get_password_hash("Admin@123456"),
+                full_name="InternVision Admin"
+            )
+            db.add(new_admin)
+            db.commit()
+    finally:
+        db.close()
 
 # Custom Request Logging & ID Middleware
 app.add_middleware(LoggingAndRequestIDMiddleware)
