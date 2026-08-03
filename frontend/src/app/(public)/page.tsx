@@ -76,20 +76,20 @@ export default function HomePage() {
  {/* STATS STRIP (TRUST BANNER) */}
  <FadeIn delay={0.2} direction="up">
  <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 pb-8 mt-16 max-w-5xl mx-auto bg-ink-900/40 border border-ink-800/60 backdrop-blur-sm">
- <div className="space-y-1">
- <div className="text-3xl sm:text-4xl font-extrabold text-white">5,000+</div>
+ <div className="space-y-1 group">
+ <div className="text-3xl sm:text-4xl font-extrabold text-white group-hover:text-brand-400 transition-colors">5,000+</div>
  <div className="text-xs sm:text-sm font-medium text-ink-400">Students Trained</div>
  </div>
- <div className="space-y-1 border-l border-ink-800/50 pl-4 sm:pl-0 sm:border-l-0">
- <div className="text-3xl sm:text-4xl font-extrabold text-white">94%</div>
+ <div className="space-y-1 border-l border-ink-800/50 pl-4 sm:pl-0 sm:border-l-0 group">
+ <div className="text-3xl sm:text-4xl font-extrabold text-white group-hover:text-brand-400 transition-colors">94%</div>
  <div className="text-xs sm:text-sm font-medium text-ink-400">Placement Rate</div>
  </div>
- <div className="space-y-1 pt-4 border-t border-ink-800/50 sm:pt-0 sm:border-t-0 md:border-l md:border-ink-800/50 md:pl-4">
- <div className="text-3xl sm:text-4xl font-extrabold text-white">4.9/5</div>
+ <div className="space-y-1 pt-4 border-t border-ink-800/50 sm:pt-0 sm:border-t-0 md:border-l md:border-ink-800/50 md:pl-4 group">
+ <div className="text-3xl sm:text-4xl font-extrabold text-white group-hover:text-brand-400 transition-colors">4.9/5</div>
  <div className="text-xs sm:text-sm font-medium text-ink-400">Student Satisfaction</div>
  </div>
- <div className="space-y-1 pt-4 border-t border-ink-800/50 border-l border-ink-800/50 pl-4 sm:pt-0 sm:border-t-0 md:border-l md:border-ink-800/50 md:pl-4">
- <div className="text-3xl sm:text-4xl font-extrabold text-white">100+</div>
+ <div className="space-y-1 pt-4 border-t border-ink-800/50 border-l border-ink-800/50 pl-4 sm:pt-0 sm:border-t-0 md:border-l md:border-ink-800/50 md:pl-4 group">
+ <div className="text-3xl sm:text-4xl font-extrabold text-white group-hover:text-brand-400 transition-colors">100+</div>
  <div className="text-xs sm:text-sm font-medium text-ink-400">Hiring Partners</div>
  </div>
  </div>
@@ -109,7 +109,7 @@ export default function HomePage() {
 
  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
  <FadeIn delay={0.2} direction="up"className="h-full">
- <div className="glass-card p-8 space-y-4 hover:border-brand-500/40 transition h-full">
+ <div className="glass-card p-8 space-y-4 hover:border-brand-500/40 hover:-translate-y-2 transition-all duration-300 h-full">
  <div className="w-12 h-12 bg-brand-600/20 text-brand-400 flex items-center justify-center">
  <Code2 className="w-6 h-6"/>
  </div>
@@ -121,7 +121,7 @@ export default function HomePage() {
  </FadeIn>
 
  <FadeIn delay={0.3} direction="up"className="h-full">
- <div className="glass-card p-8 space-y-4 hover:border-purple-500/40 transition h-full">
+ <div className="glass-card p-8 space-y-4 hover:border-purple-500/40 hover:-translate-y-2 transition-all duration-300 h-full">
  <div className="w-12 h-12 bg-purple-600/20 text-purple-400 flex items-center justify-center">
  <Cpu className="w-6 h-6"/>
  </div>
@@ -132,7 +132,8 @@ export default function HomePage() {
  </div>
  </FadeIn>
 
- <div className="glass-card p-8 space-y-4 hover:border-emerald-500/40 transition">
+ <FadeIn delay={0.4} direction="up"className="h-full">
+ <div className="glass-card p-8 space-y-4 hover:border-emerald-500/40 hover:-translate-y-2 transition-all duration-300 h-full">
  <div className="w-12 h-12 bg-emerald-600/20 text-emerald-400 flex items-center justify-center">
  <Trophy className="w-6 h-6"/>
  </div>
@@ -141,6 +142,7 @@ export default function HomePage() {
  Choose from 1, 3, or 6-month hands-on internships with real client projects and verified certificates.
  </p>
  </div>
+ </FadeIn>
  </div>
  </section>
 

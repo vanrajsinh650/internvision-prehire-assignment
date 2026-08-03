@@ -3,11 +3,13 @@
 import Link from"next/link";
 import Image from"next/image";
 import { usePathname } from"next/navigation";
-import { Sparkles, BookOpen, GraduationCap, Phone, Shield } from"lucide-react";
-import { motion } from "framer-motion";
+import { useState } from"react";
+import { Sparkles, BookOpen, GraduationCap, Phone, Shield, Menu, X } from"lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
  const pathname = usePathname();
+ const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
  const isActive = (path: string) => pathname === path;
 
@@ -53,7 +55,7 @@ export default function Navbar() {
  </Link>
  </nav>
 
- <div className="flex items-center gap-3">
+ <div className="hidden md:flex items-center gap-3">
  <Link
  href="/admin/login"
  className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-medium bg-ink-800 hover:bg-ink-700 text-ink-300 border border-ink-700 transition"
@@ -68,7 +70,77 @@ export default function Navbar() {
  Apply Now
  </Link>
  </div>
+ 
+ {/* Mobile Menu Toggle */}
+ <button 
+ onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+ className="md:hidden p-2 text-ink-300 hover:text-white transition"
+ >
+ {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+ </button>
  </div>
+
+ {/* Mobile Menu Dropdown */}
+ <AnimatePresence>
+ {isMobileMenuOpen && (
+ <motion.div
+ initial={{ opacity: 0, y: -20 }}
+ animate={{ opacity: 1, y: 0 }}
+ exit={{ opacity: 0, y: -20 }}
+ transition={{ duration: 0.2 }}
+ className="md:hidden absolute top-16 left-0 w-full bg-ink-950 border-b border-ink-800 shadow-2xl p-4 flex flex-col gap-4"
+ >
+ <Link
+ href="/"
+ onClick={() => setIsMobileMenuOpen(false)}
+ className={`px-4 py-3 border border-ink-800 transition-colors ${isActive('/') ? 'bg-brand-500/10 text-brand-400 font-semibold border-brand-500/20' : 'bg-ink-900 text-ink-300 hover:text-white'}`}
+ >
+ Home
+ </Link>
+ <Link
+ href="/courses"
+ onClick={() => setIsMobileMenuOpen(false)}
+ className={`flex items-center gap-2 px-4 py-3 border border-ink-800 transition-colors ${isActive('/courses') ? 'bg-brand-500/10 text-brand-400 font-semibold border-brand-500/20' : 'bg-ink-900 text-ink-300 hover:text-white'}`}
+ >
+ <BookOpen className="w-4 h-4"/>
+ Courses
+ </Link>
+ <Link
+ href="/apply"
+ onClick={() => setIsMobileMenuOpen(false)}
+ className={`flex items-center gap-2 px-4 py-3 border border-ink-800 transition-colors ${isActive('/apply') ? 'bg-brand-500/10 text-brand-400 font-semibold border-brand-500/20' : 'bg-ink-900 text-ink-300 hover:text-white'}`}
+ >
+ <GraduationCap className="w-4 h-4"/>
+ Internship
+ </Link>
+ <Link
+ href="/contact"
+ onClick={() => setIsMobileMenuOpen(false)}
+ className={`flex items-center gap-2 px-4 py-3 border border-ink-800 transition-colors ${isActive('/contact') ? 'bg-brand-500/10 text-brand-400 font-semibold border-brand-500/20' : 'bg-ink-900 text-ink-300 hover:text-white'}`}
+ >
+ <Phone className="w-4 h-4"/>
+ Contact
+ </Link>
+ <div className="grid grid-cols-2 gap-3 pt-2">
+ <Link
+ href="/admin/login"
+ onClick={() => setIsMobileMenuOpen(false)}
+ className="flex items-center justify-center gap-1.5 px-3.5 py-3 text-sm font-medium bg-ink-800 text-ink-300 border border-ink-700 transition"
+ >
+ <Shield className="w-4 h-4"/>
+ Admin
+ </Link>
+ <Link
+ href="/apply"
+ onClick={() => setIsMobileMenuOpen(false)}
+ className="px-4 py-3 flex items-center justify-center text-sm font-semibold bg-brand-600 text-white transition"
+ >
+ Apply Now
+ </Link>
+ </div>
+ </motion.div>
+ )}
+ </AnimatePresence>
  </motion.header>
  );
 }
