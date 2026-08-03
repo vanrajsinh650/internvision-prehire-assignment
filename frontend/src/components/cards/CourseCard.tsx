@@ -14,7 +14,7 @@ export function CourseCard({ course }: CourseCardProps) {
  return (
  <motion.div 
  whileHover={{ y: -4 }}
- className="glass-card p-6 flex flex-col justify-between hover:border-brand-500/50 transition group h-full"
+ className="bg-ink-950 border border-ink-800 p-6 flex flex-col justify-between hover:border-ink-700 transition group h-full"
  >
  <div className="space-y-4">
  <div className="flex items-center justify-between text-xs">
@@ -55,7 +55,7 @@ export function CourseCard({ course }: CourseCardProps) {
 
  <Link
  href={`/courses/${course.slug}`}
- className="px-4 py-2.5 text-xs font-semibold bg-brand-600 hover:bg-brand-500 text-white flex items-center gap-1 transition shadow-brand-600/20"
+ className="px-4 py-2.5 text-xs font-semibold bg-brand-600 hover:bg-brand-500 text-white flex items-center gap-1 transition"
  >
  View Syllabus
  <ArrowRight className="w-3.5 h-3.5"/>

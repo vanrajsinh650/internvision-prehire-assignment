@@ -44,7 +44,7 @@ export default function CoursesPage() {
  <FadeIn delay={0.1} direction="up">
  <div className="text-center space-y-4 max-w-3xl mx-auto">
  <h1 className="text-4xl font-extrabold text-white tracking-tight">
- Explore Industry <span className="gradient-text">Bootcamps</span>
+ Explore Industry <span className="text-brand-400">Bootcamps</span>
  </h1>
  <p className="text-ink-400 text-sm sm:text-base leading-relaxed">
  Comprehensive, project-driven training programs engineered to make you job-ready.
@@ -53,7 +53,7 @@ export default function CoursesPage() {
  </FadeIn>
 
  <FadeIn delay={0.2} direction="up">
- <div className="glass-card p-4 flex flex-col md:flex-row gap-4 items-center justify-between">
+ <div className="bg-ink-950 border border-ink-800 p-4 flex flex-col md:flex-row gap-4 items-center justify-between">
  <div className="relative w-full md:w-96">
  <Search className="w-4 h-4 absolute left-3.5 top-3.5 text-ink-400"/>
  <input
@@ -61,7 +61,7 @@ export default function CoursesPage() {
  placeholder="Search courses or technologies..."
  value={search}
  onChange={(e) => setSearch(e.target.value)}
- className="w-full bg-ink-900/80 border border-ink-700/80 pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 transition"
+ className="w-full bg-ink-900 border border-ink-700 pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 transition"
  />
  </div>
 
@@ -71,7 +71,7 @@ export default function CoursesPage() {
  <select
  value={levelFilter}
  onChange={(e) => setLevelFilter(e.target.value)}
- className="bg-ink-900/80 border border-ink-700/80 px-4 py-2.5 text-sm text-ink-200 focus:outline-none focus:border-brand-500 transition w-full md:w-auto"
+ className="bg-ink-900 border border-ink-700 px-4 py-2.5 text-sm text-ink-200 focus:outline-none focus:border-brand-500 transition w-full md:w-auto"
  >
  <option value="all">All Levels</option>
  <option value="Beginner">Beginner</option>
@@ -87,7 +87,7 @@ export default function CoursesPage() {
  <Loader2 className="w-8 h-8 text-brand-500 animate-spin"/>
  </div>
  ) : filteredCourses.length === 0 ? (
- <div className="glass-card p-12 text-center text-ink-400 space-y-2">
+ <div className="bg-ink-950 border border-ink-800 p-12 text-center text-ink-400 space-y-2">
  <BookOpen className="w-8 h-8 mx-auto text-ink-500"/>
  <p className="font-semibold text-white">No courses match your search criteria.</p>
  <p className="text-xs text-ink-400">Try clearing filters or searching for different keywords.</p>

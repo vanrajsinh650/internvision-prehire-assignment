@@ -181,7 +181,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  </div>
 
  {/* TECHNOLOGIES COVERED */}
- <div className="glass-card p-6 space-y-4">
+ <div className="bg-ink-950 border border-ink-800 p-6 space-y-4">
  <h3 className="text-lg font-bold text-white">Technologies You Will Master</h3>
  <div className="flex flex-wrap gap-2">
  {course.technologies.map((tech) => (
@@ -193,7 +193,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  </div>
 
  {/* SYLLABUS HIGHLIGHTS */}
- <div className="glass-card p-6 space-y-4">
+ <div className="bg-ink-950 border border-ink-800 p-6 space-y-4">
  <h3 className="text-lg font-bold text-white">Curriculum & Learning Outcomes</h3>
  <ul className="space-y-3 text-sm text-ink-300">
  <li className="flex items-start gap-3">
@@ -218,7 +218,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
 
  {/* SIDEBAR ENROLLMENT CARD */}
  <div className="space-y-6">
- <div className="glass-card p-6 space-y-6 sticky top-24 border border-brand-500/30">
+ <div className="bg-ink-950 border border-ink-800 p-6 space-y-6 sticky top-24">
  <div>
  <div className="text-xs text-ink-400 font-medium">Total Registration Fee</div>
  <div className="text-4xl font-extrabold text-white mt-1">{formatINR(course.price_inr)}</div>
@@ -249,8 +249,8 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
 
  {/* REGISTRATION MODAL */}
  {showCheckoutModal && (
- <div className="fixed inset-0 z-50 bg-ink-950/80 backdrop-blur-sm flex items-center justify-center p-4">
- <div className="glass-card max-w-md w-full p-6 space-y-6 border border-ink-700 relative">
+ <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
+ <div className="bg-ink-950 border border-ink-800 max-w-md w-full p-6 space-y-6 relative">
  <div className="flex items-center justify-between border-b border-ink-800 pb-4">
  <div>
  <div className="flex items-center gap-2 mb-1">

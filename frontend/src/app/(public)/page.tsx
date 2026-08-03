@@ -8,7 +8,7 @@ export default function HomePage() {
  <div className="space-y-24 pb-20">
  {/* HERO SECTION */}
  <section className="relative overflow-hidden min-h-[80vh] grid grid-cols-[minmax(1rem,1fr)_minmax(0,40rem)_minmax(0,1fr)] lg:grid-cols-[minmax(2rem,1fr)_minmax(0,38rem)_minmax(0,1fr)] items-center lg:items-end pb-16">
- <div className="absolute inset-0 bg-ink-900 from-brand-600/10 to-transparent blur-3xl -z-10"/>
+ <div className="absolute inset-0 bg-ink-950 -z-10"/>
 
  <div className="col-start-2 pt-32 lg:pt-16 lg:pb-16 space-y-8 text-left z-10">
  <FadeIn delay={0.1} direction="up">
@@ -20,7 +20,7 @@ export default function HomePage() {
 
  <FadeIn delay={0.2} direction="up">
  <h1 className="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight max-w-3xl">
- Transform Your Passion Into A <br/><span className="gradient-text">Production Tech Career</span>
+ Transform Your Passion Into A <br/><span className="text-brand-400">Production Tech Career</span>
  </h1>
  </FadeIn>
 
@@ -59,7 +59,7 @@ export default function HomePage() {
 
  {/* Asymmetric art element bleeding right */}
  <div className="col-[2/-1] lg:col-[3/-1] self-stretch hidden lg:flex items-end justify-end pb-16 relative">
- <div className="w-full h-full border-l border-t border-ink-800/50 bg-ink-900/40 backdrop-blur-md relative overflow-hidden mt-32 ml-16">
+ <div className="w-full h-full border-l border-t border-ink-800/50 bg-ink-950 relative overflow-hidden mt-32 ml-16">
  <div className="absolute inset-0 bg-grid-ink-800/30 bg-[length:32px_32px]"/>
  <div className="absolute top-1/2 -translate-y-1/2 -left-12 space-y-4">
  <Float delay={0} yOffset={10}>
@@ -75,7 +75,7 @@ export default function HomePage() {
 
  {/* STATS STRIP (TRUST BANNER) */}
  <FadeIn delay={0.2} direction="up">
- <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 pb-8 mt-16 max-w-5xl mx-auto bg-ink-900/40 border border-ink-800/60 backdrop-blur-sm">
+ <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 pb-8 mt-16 max-w-5xl mx-auto bg-ink-950 border border-ink-800">
  <div className="space-y-1 group">
  <div className="text-3xl sm:text-4xl font-extrabold text-white group-hover:text-brand-400 transition-colors">5,000+</div>
  <div className="text-xs sm:text-sm font-medium text-ink-400">Students Trained</div>
@@ -109,7 +109,7 @@ export default function HomePage() {
 
  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
  <FadeIn delay={0.2} direction="up"className="h-full">
- <div className="glass-card p-8 space-y-4 hover:border-brand-500/40 hover:-translate-y-2 transition-all duration-300 h-full">
+ <div className="bg-ink-950 border border-ink-800 p-8 space-y-4 h-full">
  <div className="w-12 h-12 bg-brand-600/20 text-brand-400 flex items-center justify-center">
  <Code2 className="w-6 h-6"/>
  </div>
@@ -121,7 +121,7 @@ export default function HomePage() {
  </FadeIn>
 
  <FadeIn delay={0.3} direction="up"className="h-full">
- <div className="glass-card p-8 space-y-4 hover:border-purple-500/40 hover:-translate-y-2 transition-all duration-300 h-full">
+ <div className="bg-ink-950 border border-ink-800 p-8 space-y-4 h-full">
  <div className="w-12 h-12 bg-purple-600/20 text-purple-400 flex items-center justify-center">
  <Cpu className="w-6 h-6"/>
  </div>
@@ -133,7 +133,7 @@ export default function HomePage() {
  </FadeIn>
 
  <FadeIn delay={0.4} direction="up"className="h-full">
- <div className="glass-card p-8 space-y-4 hover:border-emerald-500/40 hover:-translate-y-2 transition-all duration-300 h-full">
+ <div className="bg-ink-950 border border-ink-800 p-8 space-y-4 h-full">
  <div className="w-12 h-12 bg-emerald-600/20 text-emerald-400 flex items-center justify-center">
  <Trophy className="w-6 h-6"/>
  </div>
@@ -162,7 +162,7 @@ export default function HomePage() {
 
  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
  <FadeIn delay={0.2} direction="up"className="h-full">
- <div className="glass-card p-8 flex flex-col justify-between space-y-6 h-full">
+ <div className="bg-ink-950 border border-ink-800 p-8 flex flex-col justify-between space-y-6 h-full">
  <div className="space-y-4">
  <div className="flex items-center justify-between">
  <span className="px-3 py-1 text-xs font-medium bg-brand-500/10 text-brand-400 border border-brand-500/20">
@@ -192,7 +192,7 @@ export default function HomePage() {
  </FadeIn>
 
  <FadeIn delay={0.3} direction="up"className="h-full">
- <div className="glass-card p-8 flex flex-col justify-between space-y-6 h-full">
+ <div className="bg-ink-950 border border-ink-800 p-8 flex flex-col justify-between space-y-6 h-full">
  <div className="space-y-4">
  <div className="flex items-center justify-between">
  <span className="px-3 py-1 text-xs font-medium bg-purple-500/10 text-purple-400 border border-purple-500/20">
@@ -226,8 +226,7 @@ export default function HomePage() {
  {/* CTA SECTION */}
  <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
  <FadeIn delay={0.2} direction="up">
- <div className="glass-card p-12 text-center space-y-6 relative overflow-hidden">
- <div className="absolute -right-12 -top-12 w-64 h-64 bg-brand-600/20 blur-3xl pointer-events-none"/>
+ <div className="bg-ink-950 border border-ink-800 p-12 text-center space-y-6 relative overflow-hidden">
  <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Ready to Step Into Tech?</h2>
  <p className="text-ink-300 max-w-xl mx-auto text-sm leading-relaxed">
  Apply today for our upcoming batch. Flexible 1, 3, or 6-month internship durations tailored to your academic schedule.

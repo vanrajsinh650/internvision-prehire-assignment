@@ -8,13 +8,11 @@
  }
 }
 
-/* Custom scrollbar and glassmorphism helpers */
+/* Custom clean UI helpers */
 .glass-card {
- background: rgba(26, 24, 20, 0.75);
- backdrop-filter: blur(12px);
- border: 1px solid rgba(246, 245, 241, 0.1); /* ink-50 */
+  @apply bg-ink-950 border border-ink-800;
 }
 
 .gradient-text {
-  @apply text-brand-400 font-bold;
+  @apply text-white font-bold;
 }

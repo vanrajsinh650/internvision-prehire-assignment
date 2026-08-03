@@ -64,7 +64,7 @@ export default function InternshipApplyPage() {
  Pre-Hire Internship Program 2026
  </div>
  <h1 className="text-4xl font-extrabold text-white tracking-tight">
- Apply For <span className="gradient-text">Internship</span>
+ Apply For <span className="text-brand-400">Internship</span>
  </h1>
  <p className="text-ink-400 text-sm leading-relaxed">
  Join our hands-on engineering track. Gain experience building production applications with 1:1 senior developer guidance.
@@ -74,7 +74,7 @@ export default function InternshipApplyPage() {
 
  {/* APPLICATION FORM */}
  <FadeIn delay={0.2} direction="up">
- <div className="glass-card p-8 border border-ink-800 space-y-8">
+ <div className="bg-ink-950 p-8 border border-ink-800 space-y-8">
  {errorMsg && (
  <div className="p-4 bg-red-500/10 border border-red-500/30 text-red-400 text-sm">
  {errorMsg}
@@ -99,7 +99,7 @@ export default function InternshipApplyPage() {
  placeholder="Aarav Sharma"
  value={formData.full_name}
  onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
- className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition"
+ className="w-full bg-ink-900 border border-ink-700 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition"
  />
  </div>
 
@@ -113,7 +113,7 @@ export default function InternshipApplyPage() {
  placeholder="aarav@example.com"
  value={formData.email}
  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
- className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition"
+ className="w-full bg-ink-900 border border-ink-700 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition"
  />
  </div>
 
@@ -127,7 +127,7 @@ export default function InternshipApplyPage() {
  placeholder="+91 9876543210"
  value={formData.phone}
  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
- className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition"
+ className="w-full bg-ink-900 border border-ink-700 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition"
  />
  </div>
  </div>
@@ -150,7 +150,7 @@ export default function InternshipApplyPage() {
  placeholder="Indian Institute of Technology, Bombay"
  value={formData.college}
  onChange={(e) => setFormData({ ...formData, college: e.target.value })}
- className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition"
+ className="w-full bg-ink-900 border border-ink-700 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition"
  />
  </div>
 
@@ -164,7 +164,7 @@ export default function InternshipApplyPage() {
  placeholder="B.Tech CSE"
  value={formData.degree}
  onChange={(e) => setFormData({ ...formData, degree: e.target.value })}
- className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition"
+ className="w-full bg-ink-900 border border-ink-700 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition"
  />
  </div>
 
@@ -175,7 +175,7 @@ export default function InternshipApplyPage() {
  <select
  value={formData.year_of_study}
  onChange={(e) => setFormData({ ...formData, year_of_study: e.target.value })}
- className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition"
+ className="w-full bg-ink-900 border border-ink-700 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition"
  >
  <option value="1st Year">1st Year</option>
  <option value="2nd Year">2nd Year</option>
@@ -204,7 +204,7 @@ export default function InternshipApplyPage() {
  placeholder="React, Next.js, Python, FastAPI, Docker, PostgreSQL"
  value={formData.skills}
  onChange={(e) => setFormData({ ...formData, skills: e.target.value })}
- className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition"
+ className="w-full bg-ink-900 border border-ink-700 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition"
  />
  </div>
 
@@ -221,7 +221,7 @@ export default function InternshipApplyPage() {
  className={`cursor-pointer p-4 border text-center transition ${
  formData.duration === dur
  ?"bg-brand-600/20 border-brand-500 text-white"
- :"bg-ink-900/60 border-ink-800 text-ink-400 hover:border-ink-700"
+ :"bg-ink-900 border-ink-800 text-ink-400 hover:border-ink-700"
  }`}
  >
  <div className="font-bold text-base text-white">{dur}</div>
