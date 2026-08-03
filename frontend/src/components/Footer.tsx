@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Sparkles, Github, Twitter, Linkedin, Mail } from "lucide-react";
+import { Sparkles, ExternalLink, MessageCircle, Users, Mail } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -41,13 +41,13 @@ export default function Footer() {
             <h4 className="font-semibold text-white mb-4 text-xs uppercase tracking-wider">Connect</h4>
             <div className="flex gap-4 mb-4">
               <a href="#" className="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-slate-700 hover:text-white transition">
-                <Github className="w-4 h-4" />
+                <ExternalLink className="w-4 h-4" />
               </a>
               <a href="#" className="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-slate-700 hover:text-white transition">
-                <Twitter className="w-4 h-4" />
+                <MessageCircle className="w-4 h-4" />
               </a>
               <a href="#" className="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-slate-700 hover:text-white transition">
-                <Linkedin className="w-4 h-4" />
+                <Users className="w-4 h-4" />
               </a>
               <a href="mailto:support@internvision.tech" className="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-slate-700 hover:text-white transition">
                 <Mail className="w-4 h-4" />
