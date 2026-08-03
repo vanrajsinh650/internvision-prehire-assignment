@@ -17,6 +17,7 @@ from app.courses.schemas import RegistrationResponse
 router = APIRouter(prefix="/admin", tags=["Admin Dashboard"])
 
 @router.get("/stats", response_model=DashboardStats)
+@router.get("/dashboard", response_model=DashboardStats)
 def get_dashboard_stats(
     db: Session = Depends(get_db),
     current_admin: Admin = Depends(get_current_admin)

@@ -34,13 +34,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Feature Routers mounted under /api
-app.include_router(auth_router, prefix="/api")
-app.include_router(courses_router, prefix="/api")
-app.include_router(internship_router, prefix="/api")
-app.include_router(payments_router, prefix="/api")
-app.include_router(dashboard_router, prefix="/api")
-app.include_router(export_router, prefix="/api")
+# Feature Routers mounted under /api and root for total path compatibility
+for r in [auth_router, courses_router, internship_router, payments_router, dashboard_router, export_router]:
+    app.include_router(r, prefix="/api")
+    app.include_router(r)
+
 
 @app.get("/")
 def root():

@@ -5,9 +5,10 @@ from app.shared.exceptions import BadRequestException
 from app.internship.models import InternshipApplication
 from app.internship.schemas import ApplicationCreate, ApplicationResponse
 
-router = APIRouter(prefix="/applications", tags=["Internship Applications"])
+router = APIRouter(tags=["Internship Applications"])
 
-@router.post("", response_model=ApplicationResponse, status_code=status.HTTP_201_CREATED)
+@router.post("/applications", response_model=ApplicationResponse, status_code=status.HTTP_201_CREATED)
+@router.post("/internships/apply", response_model=ApplicationResponse, status_code=status.HTTP_201_CREATED)
 def submit_internship_application(app_in: ApplicationCreate, db: Session = Depends(get_db)):
     valid_durations = ["1 Month", "3 Months", "6 Months"]
     if app_in.duration not in valid_durations:

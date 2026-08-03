@@ -35,6 +35,13 @@ def get_course(course_identifier: str, db: Session = Depends(get_db)):
         raise NotFoundException("Course not found")
     return course
 
+from app.payments.schemas import CreateOrderRequest, CreateOrderResponse
+from app.payments.router import create_payment_order
+
+@router.post("/register", response_model=CreateOrderResponse, status_code=status.HTTP_201_CREATED)
+def register_for_course(req: CreateOrderRequest, db: Session = Depends(get_db)):
+    return create_payment_order(req, db)
+
 @router.post("", response_model=CourseResponse, status_code=status.HTTP_201_CREATED)
 def create_course(
     course_in: CourseCreate,
@@ -50,3 +57,4 @@ def create_course(
     db.commit()
     db.refresh(course)
     return course
+
