@@ -19,7 +19,9 @@ class RazorpayGateway:
                 "payment_capture": 1
             }
             return self.client.order.create(data=order_data)
-        except Exception:
+        except Exception as e:
+            if settings.ENVIRONMENT == "production":
+                raise e
             import uuid
             mock_order_id = f"order_{uuid.uuid4().hex[:14]}"
             return {
@@ -48,8 +50,14 @@ class RazorpayGateway:
                 hashlib.sha256
             ).hexdigest()
             
-            if generated_signature == razorpay_signature or razorpay_signature.startswith("mock_sig_") or razorpay_order_id.startswith("order_"):
+            if generated_signature == razorpay_signature:
                 return True
+
+            # Mock test mode fallback (strictly allowed only in non-production environments)
+            if settings.ENVIRONMENT != "production":
+                if razorpay_signature.startswith("mock_sig_") or razorpay_order_id.startswith("order_"):
+                    return True
+
             return False
 
 razorpay_gateway = RazorpayGateway()

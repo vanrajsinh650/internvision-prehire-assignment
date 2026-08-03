@@ -1,6 +1,6 @@
-# 🚀 InternVision Tech - Production EdTech & Internship Platform
+# 🚀 InternVision Tech - Full-Stack EdTech & Internship Platform
 
-> **A modern, high-contrast, production-ready Full-Stack EdTech & Pre-Hire Internship Platform.** Built with Next.js 15 (React 19), FastAPI, PostgreSQL (Supabase IPv4 Connection Pooler), Razorpay Payment Gateway, and JWT-authenticated Admin Portal.
+> **A modern, high-contrast Full-Stack EdTech & Pre-Hire Internship Platform (Fully Functional & Deployed for Evaluation).** Built with Next.js 15 (React 19), FastAPI, PostgreSQL (Supabase IPv4 Connection Pooler), Razorpay Payment Gateway, and JWT-authenticated Admin Portal.
 
 ![Stack](https://img.shields.io/badge/Frontend-Next.js%2015%20%7C%20React%2019-black?style=for-the-badge&logo=next.js)
 ![Backend](https://img.shields.io/badge/Backend-FastAPI%20%7C%20Python%203.11-009688?style=for-the-badge&logo=fastapi)
@@ -64,7 +64,7 @@ This project intentionally rejects generic "AI slop" aesthetics (floating purple
 ### 🔐 Admin Dashboard & Export System
 - **Real-Time Metrics**: Track total applications, registrations, revenue (INR), and conversion metrics.
 - **Data Filtering**: Filter candidate applications by status (`pending`, `reviewed`, `accepted`, `rejected`).
-- **CSV Data Stream Export**: Instant 1-click download of all application records and payment audit logs.
+- **Excel (.xlsx) Data Export**: Instant 1-click download of all application records and payment audit logs in standard `.xlsx` spreadsheet format.
 
 ---
 
@@ -78,6 +78,7 @@ This project intentionally rejects generic "AI slop" aesthetics (floating purple
 | **Database** | **PostgreSQL & Supabase** | Session ORM via SQLAlchemy 2.0, IPv4 Pooler (:6543) |
 | **Authentication**| **JWT (JSON Web Tokens)** | Passlib (Bcrypt) password hashing, AuthGuard |
 | **Payments** | **Razorpay SDK** | Test/Live mode checkout, HMAC-SHA256 verification |
+| **Exports** | **OpenPyXL** | Native Excel (.xlsx) report generation |
 
 ---
 
@@ -136,8 +137,8 @@ npm run dev
 | `GET /api/admin/applications` | `GET` | Fetch all internship applications | **JWT** |
 | `GET /api/admin/payments` | `GET` | Fetch all payment records | **JWT** |
 | `GET /api/admin/stats` | `GET` | Fetch real-time dashboard analytics | **JWT** |
-| `GET /api/admin/export/applications` | `GET` | Stream CSV export of applications | **JWT** |
-| `GET /api/admin/export/payments` | `GET` | Stream CSV export of payment logs | **JWT** |
+| `GET /api/admin/export/applications` | `GET` | Generate Excel (.xlsx) export of applications | **JWT** |
+| `GET /api/admin/export/payments` | `GET` | Generate Excel (.xlsx) export of payment logs | **JWT** |
 
 ---
 
@@ -151,7 +152,7 @@ internvision-prehire-assignment/
 │   │   ├── core/            # Config, Security & Tracing Middleware
 │   │   ├── courses/         # Course Catalog Models & Routers
 │   │   ├── dashboard/       # Admin Analytics & Management
-│   │   ├── export/          # CSV Streaming Exports
+│   │   ├── export/          # Excel (.xlsx) File Exports
 │   │   ├── internship/      # Application Processing
 │   │   ├── payments/        # Razorpay Integration & Signature Verification
 │   │   └── shared/          # Database ORM Base & Exception Handlers
@@ -172,3 +173,4 @@ internvision-prehire-assignment/
 ---
 
 *Built with precision for InternVision Tech.*
+
