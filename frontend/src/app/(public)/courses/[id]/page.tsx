@@ -111,6 +111,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  modal: {
  ondismiss: function () {
  setSubmitting(false);
+ setShowCheckoutModal(false);
  },
  },
  };
