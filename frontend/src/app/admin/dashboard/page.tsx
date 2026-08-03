@@ -10,6 +10,7 @@ import { DashboardStats, PaginatedResult, InternshipApplicationResponse, Payment
 import { apiRequest } from"@/lib/api-client";
 import { formatINR } from"@/lib/utils";
 import { FadeIn } from "@/components/animations/FadeIn";
+import AuthGuard from "@/components/AuthGuard";
 
 export default function AdminDashboardPage() {
  const router = useRouter();
@@ -33,12 +34,121 @@ export default function AdminDashboardPage() {
  const [loadingPayments, setLoadingPayments] = useState(false);
 
  useEffect(() => {
- // Check authentication
- const token = localStorage.getItem("token");
- if (!token) {
- router.push("/admin/login");
- return;
+ fetchStats();
+ }, []);
+
+ useEffect(() => {
+ if (activeTab ==="applications"|| activeTab ==="overview") {
+ fetchApplications();
  }
+ if (activeTab ==="payments"|| activeTab ==="overview") {
+ fetchPayments();
+ }
+ }, [activeTab, appsSearch, appsDuration, appsPage, pmtSearch, pmtStatus, pmtPage]);
+
+ const fetchStats = async () => {
+ try {
+ const data = await apiRequest<DashboardStats>("/admin/stats");
+ setStats(data);
+ } catch (err) {
+ localStorage.removeItem("token");
+ router.push("/admin/login");
+ } finally {
+ setLoadingStats(false);
+ }
+ };
+
+ const fetchApplications = async () => {
+ setLoadingApps(true);
+ try {
+ const params = new URLSearchParams({
+ page: appsPage.toString(),
+ limit:"10",
+ });
+ if (appsSearch) params.set("q", appsSearch);
+ if (appsDuration !=="all") params.set("duration", appsDuration);
+
+ const data = await apiRequest<PaginatedResult<InternshipApplicationResponse>>(`/admin/applications?${params.toString()}`);
+ setAppsData(data);
+ } catch (err) {
+ console.error(err);
+ } finally {
+ setLoadingApps(false);
+ }
+ };
+
+ const fetchPayments = async () => {
+ setLoadingPayments(true);
+ try {
+ const params = new URLSearchParams({
+ page: pmtPage.toString(),
+ limit:"10",
+ });
+ if (pmtSearch) params.set("q", pmtSearch);
+ if (pmtStatus !=="all") params.set("status", pmtStatus);
+
+ const data = await apiRequest<PaginatedResult<PaymentItem>>(`/admin/payments?${params.toString()}`);
+ setPaymentsData(data);
+ } catch (err) {
+ console.error(err);
+ } finally {
+ setLoadingPayments(false);
+ }
+ };
+
+ const handleExportExcel = (type: 'applications' | 'payments') => {
+ const token = localStorage.getItem("token");
+ const baseUrl = (process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000/api/v1").replace(/\/$/, "");
+ let exportUrl = `${baseUrl}/admin/export/${type}?token=${token}`;
+ if (type === 'applications' && appsDuration !=="all") {
+ exportUrl += `&duration=${encodeURIComponent(appsDuration)}`;
+ }
+ if (type === 'payments' && pmtStatus !=="all") {
+ exportUrl += `&status=${encodeURIComponent(pmtStatus)}`;
+ }
+
+ // Trigger binary stream download directly in browser
+ fetch(exportUrl, {
+ headers: {
+ Authorization: `Bearer ${token}`
+ }
+ })
+ .then(res => res.blob())
+ .then(blob => {
+ const url = window.URL.createObjectURL(blob);
+ const a = document.createElement("a");
+ a.href = url;
+ a.download = `internvision_${type}.xlsx`;
+ document.body.appendChild(a);
+ a.click();
+ a.remove();
+ })
+ .catch(err => console.error("Export download failed", err));
+ };
+import AuthGuard from "@/components/AuthGuard";
+
+export default function AdminDashboardPage() {
+ const router = useRouter();
+ const [activeTab, setActiveTab] = useState<"overview"|"applications"|"payments"|"registrations">("overview");
+
+ const [stats, setStats] = useState<DashboardStats | null>(null);
+ const [loadingStats, setLoadingStats] = useState(true);
+
+ // Applications Table State
+ const [appsData, setAppsData] = useState<PaginatedResult<InternshipApplicationResponse>>({ total: 0, page: 1, limit: 10, total_pages: 1, items: [] });
+ const [appsSearch, setAppsSearch] = useState("");
+ const [appsDuration, setAppsDuration] = useState("all");
+ const [appsPage, setAppsPage] = useState(1);
+ const [loadingApps, setLoadingApps] = useState(false);
+
+ // Payments Table State
+ const [paymentsData, setPaymentsData] = useState<PaginatedResult<PaymentItem>>({ total: 0, page: 1, limit: 10, total_pages: 1, items: [] });
+ const [pmtSearch, setPmtSearch] = useState("");
+ const [pmtStatus, setPmtStatus] = useState("all");
+ const [pmtPage, setPmtPage] = useState(1);
+ const [loadingPayments, setLoadingPayments] = useState(false);
+
+ useEffect(() => {
  fetchStats();
  }, []);
 
@@ -137,7 +247,8 @@ export default function AdminDashboardPage() {
  };
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-ink-950 pb-20">
+    <AuthGuard>
+      <div className="min-h-screen relative overflow-hidden bg-ink-950 pb-20">
       {/* Background Blobs for Glass Effect */}
       <div className="absolute top-0 left-1/4 w-[40rem] h-[40rem] bg-brand-600/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[40rem] h-[40rem] bg-purple-600/10 rounded-full blur-[120px] pointer-events-none" />
@@ -535,5 +646,6 @@ export default function AdminDashboardPage() {
         )}
       </div>
     </div>
+    </AuthGuard>
   );
 }

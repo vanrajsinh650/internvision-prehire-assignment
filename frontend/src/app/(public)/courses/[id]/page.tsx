@@ -5,8 +5,19 @@ import { useRouter } from"next/navigation";
 import Link from"next/link";
 import { BookOpen, Clock, Signal, CheckCircle2, ShieldCheck, CreditCard, ArrowLeft, Loader2, User, Mail, Phone } from"lucide-react";
 import { Course, OrderCreateResponse } from"@/types";
-import { apiRequest } from"@/lib/api-client";
-import { formatINR } from"@/lib/utils";
+import { apiRequest } from "@/lib/api-client";
+import { formatINR } from "@/lib/utils";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+
+const registrationSchema = z.object({
+  student_name: z.string().min(2, "Name must be at least 2 characters."),
+  student_email: z.string().email("Please enter a valid email address."),
+  student_phone: z.string().regex(/^\+?[1-9]\d{1,14}$/, "Please enter a valid phone number."),
+});
+
+type RegistrationFormValues = z.infer<typeof registrationSchema>;
 
 declare global {
  interface Window {
@@ -20,14 +31,16 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  const [course, setCourse] = useState<Course | null>(null);
  const [loading, setLoading] = useState(true);
  const [showCheckoutModal, setShowCheckoutModal] = useState(false);
- const [submitting, setSubmitting] = useState(false);
- const [errorMsg, setErrorMsg] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
- const [studentForm, setStudentForm] = useState({
- student_name:"",
- student_email:"",
- student_phone:"",
- });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<RegistrationFormValues>({
+    resolver: zodResolver(registrationSchema),
+  });
 
  useEffect(() => {
  fetchCourseDetails();
@@ -44,40 +57,39 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  }
  };
 
- const handleCreateOrder = async (e: React.FormEvent) => {
- e.preventDefault();
- if (!course) return;
- setSubmitting(true);
- setErrorMsg("");
+  const handleCreateOrder = async (data: RegistrationFormValues) => {
+    if (!course) return;
+    setSubmitting(true);
+    setErrorMsg("");
 
- try {
- // 1. Create order on backend
- const orderRes = await apiRequest<OrderCreateResponse>("/payments/create-order", {
- method:"POST",
- body: JSON.stringify({
- course_id: course.id,
- student_name: studentForm.student_name,
- student_email: studentForm.student_email,
- student_phone: studentForm.student_phone,
- }),
- });
+    try {
+      // 1. Create order on backend
+      const orderRes = await apiRequest<OrderCreateResponse>("/payments/create-order", {
+        method: "POST",
+        body: JSON.stringify({
+          course_id: course.id,
+          student_name: data.student_name,
+          student_email: data.student_email,
+          student_phone: data.student_phone,
+        }),
+      });
 
- // 2. Options for Razorpay Checkout Modal
- const options = {
- key: orderRes.key_id,
- amount: orderRes.amount_inr * 100,
- currency: orderRes.currency,
- name:"InternVision Tech",
- description: `Enrollment: ${course.title}`,
- order_id: orderRes.order_id,
- prefill: {
- name: studentForm.student_name,
- email: studentForm.student_email,
- contact: studentForm.student_phone,
- },
- theme: {
- color:"#2563eb",
- },
+      // 2. Options for Razorpay Checkout Modal
+      const options = {
+        key: orderRes.key_id,
+        amount: orderRes.amount_inr * 100,
+        currency: orderRes.currency,
+        name: "InternVision Tech",
+        description: `Enrollment: ${course.title}`,
+        order_id: orderRes.order_id,
+        prefill: {
+          name: data.student_name,
+          email: data.student_email,
+          contact: data.student_phone,
+        },
+        theme: {
+          color: "#2563eb",
+        },
  handler: async function (response: any) {
  try {
  // 3. Verify payment signature on backend
@@ -103,27 +115,20 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  },
  };
 
- // Handle fallback simulation if Razorpay JS SDK isn't loaded (e.g. adblocker)
- if (typeof window !=="undefined"&& window.Razorpay) {
- const rzp = new window.Razorpay(options);
- rzp.open();
- } else {
- // Mock success fallback for local development without external script loading
- const mockVerify = await apiRequest<any>("/payments/verify", {
- method:"POST",
- body: JSON.stringify({
- razorpay_order_id: orderRes.order_id,
- razorpay_payment_id: `pay_mock_${Date.now()}`,
- razorpay_signature: `mock_sig_${Date.now()}`,
- registration_id: orderRes.registration_id,
- }),
- });
- router.push(`/success?payment_id=${mockVerify.payment_id}&order_id=${orderRes.order_id}&course=${encodeURIComponent(course.title)}`);
- }
- } catch (err: any) {
- setErrorMsg(err.message ||"Failed to initialize payment order.");
- setSubmitting(false);
- }
+      if (typeof window === "undefined" || !window.Razorpay) {
+        throw new Error("Razorpay SDK failed to load. Please check your internet connection or disable adblockers.");
+      }
+
+      const rzp = new window.Razorpay(options);
+      rzp.on("payment.failed", function (response: any) {
+        setErrorMsg(response.error.description || "Payment failed");
+        setSubmitting(false);
+      });
+      rzp.open();
+    } catch (err: any) {
+      setErrorMsg(err.message || "Failed to initialize payment order.");
+      setSubmitting(false);
+    }
  };
 
  if (loading) {
@@ -270,48 +275,45 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  </div>
  )}
 
- <form onSubmit={handleCreateOrder} className="space-y-4 text-sm">
- <div className="space-y-1.5">
- <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
- <User className="w-3.5 h-3.5 text-brand-400"/> Full Name *
- </label>
- <input
- type="text"
- required
- placeholder="John Doe"
- value={studentForm.student_name}
- onChange={(e) => setStudentForm({ ...studentForm, student_name: e.target.value })}
- className="w-full bg-ink-900 border border-ink-700 px-3.5 py-2.5 text-white focus:outline-none focus:border-brand-500"
- />
- </div>
+          <form onSubmit={handleSubmit(handleCreateOrder)} className="space-y-4 text-sm">
+            <div className="space-y-1.5">
+              <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
+                <User className="w-3.5 h-3.5 text-brand-400" /> Full Name *
+              </label>
+              <input
+                type="text"
+                {...register("student_name")}
+                placeholder="John Doe"
+                className="w-full bg-ink-900 border border-ink-700 px-3.5 py-2.5 text-white focus:outline-none focus:border-brand-500"
+              />
+              {errors.student_name && <p className="text-red-400 text-xs mt-1">{errors.student_name.message}</p>}
+            </div>
 
- <div className="space-y-1.5">
- <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
- <Mail className="w-3.5 h-3.5 text-brand-400"/> Email Address *
- </label>
- <input
- type="email"
- required
- placeholder="john@example.com"
- value={studentForm.student_email}
- onChange={(e) => setStudentForm({ ...studentForm, student_email: e.target.value })}
- className="w-full bg-ink-900 border border-ink-700 px-3.5 py-2.5 text-white focus:outline-none focus:border-brand-500"
- />
- </div>
+            <div className="space-y-1.5">
+              <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
+                <Mail className="w-3.5 h-3.5 text-brand-400" /> Email Address *
+              </label>
+              <input
+                type="email"
+                {...register("student_email")}
+                placeholder="john@example.com"
+                className="w-full bg-ink-900 border border-ink-700 px-3.5 py-2.5 text-white focus:outline-none focus:border-brand-500"
+              />
+              {errors.student_email && <p className="text-red-400 text-xs mt-1">{errors.student_email.message}</p>}
+            </div>
 
- <div className="space-y-1.5">
- <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
- <Phone className="w-3.5 h-3.5 text-brand-400"/> Phone Number *
- </label>
- <input
- type="tel"
- required
- placeholder="+91 9876543210"
- value={studentForm.student_phone}
- onChange={(e) => setStudentForm({ ...studentForm, student_phone: e.target.value })}
- className="w-full bg-ink-900 border border-ink-700 px-3.5 py-2.5 text-white focus:outline-none focus:border-brand-500"
- />
- </div>
+            <div className="space-y-1.5">
+              <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
+                <Phone className="w-3.5 h-3.5 text-brand-400" /> Phone Number *
+              </label>
+              <input
+                type="tel"
+                {...register("student_phone")}
+                placeholder="+91 9876543210"
+                className="w-full bg-ink-900 border border-ink-700 px-3.5 py-2.5 text-white focus:outline-none focus:border-brand-500"
+              />
+              {errors.student_phone && <p className="text-red-400 text-xs mt-1">{errors.student_phone.message}</p>}
+            </div>
 
  <div className="pt-4 flex items-center justify-between border-t border-ink-800">
  <div>
