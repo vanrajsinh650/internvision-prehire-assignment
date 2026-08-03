@@ -1,5 +1,8 @@
 # CLAUDE.md - InternVision Tech Development Instructions
 
+## Git Commit Workflow Requirement
+- **CRITICAL**: Commit immediately after completing **EVERY SMALL TASK** or feature edit. Maintain granular git commit history.
+
 ## Build & Test Commands
 ### Backend
 - Navigate to `backend/`
@@ -10,7 +13,7 @@
 
 ### Frontend
 - Navigate to `frontend/`
-- Install dependencies: `npm install`
+- Install dependencies: `npm install --legacy-peer-deps`
 - Run dev server: `npm run dev`
 - Build production: `npm run build`
 
