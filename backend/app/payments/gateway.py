@@ -1,14 +1,13 @@
-import os
 import hmac
 import hashlib
 import razorpay
-
-RAZORPAY_KEY_ID = os.getenv("RAZORPAY_KEY_ID", "rzp_test_internvision123")
-RAZORPAY_KEY_SECRET = os.getenv("RAZORPAY_KEY_SECRET", "secret_internvision_key_456")
+from app.core.config import settings
 
 class RazorpayGateway:
     def __init__(self):
-        self.client = razorpay.Client(auth=(RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET))
+        self.key_id = settings.RAZORPAY_KEY_ID
+        self.key_secret = settings.RAZORPAY_KEY_SECRET
+        self.client = razorpay.Client(auth=(self.key_id, self.key_secret))
 
     def create_order(self, amount_inr: int, receipt_id: str) -> dict:
         amount_paise = amount_inr * 100
@@ -44,7 +43,7 @@ class RazorpayGateway:
             return True
         except Exception:
             generated_signature = hmac.new(
-                bytes(RAZORPAY_KEY_SECRET, 'utf-8'),
+                bytes(self.key_secret, 'utf-8'),
                 bytes(f"{razorpay_order_id}|{razorpay_payment_id}", 'utf-8'),
                 hashlib.sha256
             ).hexdigest()

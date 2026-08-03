@@ -36,6 +36,16 @@ def test_read_root():
     response = client.get("/")
     assert response.status_code == 200
     assert response.json()["status"] == "online"
+    assert "X-Request-ID" in response.headers
+
+def test_health_check():
+    response = client.get("/health")
+    assert response.status_code == 200
+    data = response.json()
+    assert data["status"] == "healthy"
+    assert data["database"] == "connected"
+    assert "version" in data
+    assert "X-Request-ID" in response.headers
 
 def test_get_courses():
     response = client.get("/api/courses")

@@ -1,7 +1,7 @@
 import uuid
-import os
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
+from app.core.config import settings
 from app.shared.database import get_db
 from app.shared.exceptions import NotFoundException, BadRequestException
 from app.courses.models import Course, CourseRegistration
@@ -9,7 +9,7 @@ from app.payments.models import Payment
 from app.payments.schemas import CreateOrderRequest, CreateOrderResponse, VerifyPaymentRequest, PaymentResponse
 from app.payments.gateway import razorpay_gateway
 
-RAZORPAY_KEY_ID = os.getenv("RAZORPAY_KEY_ID", "rzp_test_internvision123")
+RAZORPAY_KEY_ID = settings.RAZORPAY_KEY_ID
 
 router = APIRouter(prefix="/payments", tags=["Payments"])
 
