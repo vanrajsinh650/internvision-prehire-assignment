@@ -41,7 +41,7 @@ A production-ready full-stack ed-tech & internship platform featuring a modern p
 
 - **Frontend**: Next.js 15 (App Router), React 19, TypeScript, TailwindCSS, Lucide Icons, React Hook Form, Zod validation, TanStack Query.
 - **Backend**: FastAPI (Python 3.11+), SQLAlchemy 2.0 ORM, Pydantic v2 Settings, PyJWT, Passlib (Bcrypt), OpenPyXL, Razorpay SDK.
-- **Database**: PostgreSQL (Supabase / Railway compatible) with zero-config SQLite fallback for local testing.
+- **Database**: PostgreSQL (Required for Render/Railway deployment) with zero-config SQLite fallback for local testing.
 
 ---
 
