@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { Shield, Lock, Mail, ArrowRight, Loader2, Sparkles } from "lucide-react";
-import { apiRequest } from "@/lib/api-client";
+import { useState } from"react";
+import { useRouter } from"next/navigation";
+import { Shield, Lock, Mail, ArrowRight, Loader2, Sparkles } from"lucide-react";
+import { apiRequest } from"@/lib/api-client";
+import { FadeIn } from "@/components/animations/FadeIn";
 
 export default function AdminLoginPage() {
  const router = useRouter();
@@ -22,34 +23,35 @@ export default function AdminLoginPage() {
  formData.append("username", email);
  formData.append("password", password);
 
- const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000/api/v1"}/auth/login`, {
- method: "POST",
+ const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL ||"http://localhost:8000/api/v1"}/auth/login`, {
+ method:"POST",
  headers: {
- "Content-Type": "application/x-www-form-urlencoded",
+"Content-Type":"application/x-www-form-urlencoded",
  },
  body: formData.toString(),
  });
 
  if (!res.ok) {
  const errorData = await res.json();
- throw new Error(errorData.detail || "Authentication failed");
+ throw new Error(errorData.detail ||"Authentication failed");
  }
 
  const data = await res.json();
  localStorage.setItem("token", data.access_token);
  router.push("/admin/dashboard");
  } catch (err: any) {
- setError(err.message || "Invalid credentials. Please try again.");
+ setError(err.message ||"Invalid credentials. Please try again.");
  setLoading(false);
  }
  };
 
  return (
  <div className="min-h-[80vh] flex items-center justify-center px-4 py-12">
- <div className="max-w-md w-full glass-card p-8 border border-ink-800 space-y-8 ">
+ <FadeIn delay={0.1} direction="up">
+ <div className="max-w-md w-full glass-card p-8 border border-ink-800 space-y-8">
  <div className="text-center space-y-3">
  <div className="w-12 h-12 bg-ember-600/20 text-ember-400 flex items-center justify-center mx-auto border border-ember-500/30">
- <Shield className="w-6 h-6" />
+ <Shield className="w-6 h-6"/>
  </div>
  <h2 className="text-2xl font-extrabold text-white">Admin Authentication</h2>
  <p className="text-xs text-ink-400">Secure JWT portal for InternVision Tech administrators</p>
@@ -64,7 +66,7 @@ export default function AdminLoginPage() {
  <form onSubmit={handleLogin} className="space-y-4 text-sm">
  <div className="space-y-1.5">
  <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
- <Mail className="w-3.5 h-3.5 text-ember-400" /> Admin Email
+ <Mail className="w-3.5 h-3.5 text-ember-400"/> Admin Email
  </label>
  <input
  type="email"
@@ -77,7 +79,7 @@ export default function AdminLoginPage() {
 
  <div className="space-y-1.5">
  <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
- <Lock className="w-3.5 h-3.5 text-ember-400" /> Password
+ <Lock className="w-3.5 h-3.5 text-ember-400"/> Password
  </label>
  <input
  type="password"
@@ -97,20 +99,21 @@ export default function AdminLoginPage() {
  <button
  type="submit"
  disabled={loading}
- className="w-full py-3.5 font-bold bg-ember-600 hover:bg-ember-500 text-white shadow-ember-600/30 flex items-center justify-center gap-2 transition disabled:opacity-50"
+ className="w-full py-3.5 font-bold bg-ember-600 hover:bg-ember-500 text-white flex items-center justify-center gap-2 transition disabled:opacity-50"
  >
  {loading ? (
  <>
- <Loader2 className="w-4 h-4 animate-spin" /> Authenticating...
+ <Loader2 className="w-4 h-4 animate-spin"/> Authenticating...
  </>
  ) : (
  <>
- Login to Dashboard <ArrowRight className="w-4 h-4" />
+ Login to Dashboard <ArrowRight className="w-4 h-4"/>
  </>
  )}
  </button>
  </form>
  </div>
+ </FadeIn>
  </div>
  );
 }

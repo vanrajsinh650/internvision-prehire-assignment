@@ -1,18 +1,18 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import Link from "next/link";
-import { AlertCircle, ArrowLeft, RefreshCw } from "lucide-react";
-import { Suspense } from "react";
+import { useSearchParams } from"next/navigation";
+import Link from"next/link";
+import { AlertCircle, ArrowLeft, RefreshCw } from"lucide-react";
+import { Suspense } from"react";
 
 function ErrorContent() {
  const searchParams = useSearchParams();
- const message = searchParams.get("message") || "An error occurred during payment processing or verification.";
+ const message = searchParams.get("message") ||"An error occurred during payment processing or verification.";
 
  return (
  <div className="max-w-xl mx-auto px-4 py-20 text-center space-y-8">
  <div className="w-20 h-20 bg-red-500/20 text-red-400 flex items-center justify-center mx-auto shadow-red-500/20">
- <AlertCircle className="w-10 h-10" />
+ <AlertCircle className="w-10 h-10"/>
  </div>
 
  <div className="space-y-3">
@@ -30,7 +30,7 @@ function ErrorContent() {
  href="/courses"
  className="px-6 py-3 font-semibold bg-ember-600 hover:bg-ember-500 text-white flex items-center gap-2 transition"
  >
- <RefreshCw className="w-4 h-4" /> Try Again
+ <RefreshCw className="w-4 h-4"/> Try Again
  </Link>
  <Link
  href="/contact"

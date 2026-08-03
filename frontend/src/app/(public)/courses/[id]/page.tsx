@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useState, use } from "react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
-import { BookOpen, Clock, Signal, CheckCircle2, ShieldCheck, CreditCard, ArrowLeft, Loader2, User, Mail, Phone } from "lucide-react";
-import { Course, OrderCreateResponse } from "@/types";
-import { apiRequest } from "@/lib/api-client";
-import { formatINR } from "@/lib/utils";
+import { useEffect, useState, use } from"react";
+import { useRouter } from"next/navigation";
+import Link from"next/link";
+import { BookOpen, Clock, Signal, CheckCircle2, ShieldCheck, CreditCard, ArrowLeft, Loader2, User, Mail, Phone } from"lucide-react";
+import { Course, OrderCreateResponse } from"@/types";
+import { apiRequest } from"@/lib/api-client";
+import { formatINR } from"@/lib/utils";
 
 declare global {
  interface Window {
@@ -24,9 +24,9 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  const [errorMsg, setErrorMsg] = useState("");
 
  const [studentForm, setStudentForm] = useState({
- student_name: "",
- student_email: "",
- student_phone: "",
+ student_name:"",
+ student_email:"",
+ student_phone:"",
  });
 
  useEffect(() => {
@@ -53,7 +53,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  try {
  // 1. Create order on backend
  const orderRes = await apiRequest<OrderCreateResponse>("/payments/create-order", {
- method: "POST",
+ method:"POST",
  body: JSON.stringify({
  course_id: course.id,
  student_name: studentForm.student_name,
@@ -67,7 +67,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  key: orderRes.key_id,
  amount: orderRes.amount_inr * 100,
  currency: orderRes.currency,
- name: "InternVision Tech",
+ name:"InternVision Tech",
  description: `Enrollment: ${course.title}`,
  order_id: orderRes.order_id,
  prefill: {
@@ -76,13 +76,13 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  contact: studentForm.student_phone,
  },
  theme: {
- color: "#2563eb",
+ color:"#2563eb",
  },
  handler: async function (response: any) {
  try {
  // 3. Verify payment signature on backend
  await apiRequest("/payments/verify", {
- method: "POST",
+ method:"POST",
  body: JSON.stringify({
  razorpay_order_id: response.razorpay_order_id,
  razorpay_payment_id: response.razorpay_payment_id,
@@ -93,7 +93,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
 
  router.push(`/success?payment_id=${response.razorpay_payment_id}&order_id=${response.razorpay_order_id}&course=${encodeURIComponent(course.title)}`);
  } catch (err: any) {
- router.push(`/error?message=${encodeURIComponent(err.message || "Signature verification failed")}`);
+ router.push(`/error?message=${encodeURIComponent(err.message ||"Signature verification failed")}`);
  }
  },
  modal: {
@@ -104,13 +104,13 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  };
 
  // Handle fallback simulation if Razorpay JS SDK isn't loaded (e.g. adblocker)
- if (typeof window !== "undefined" && window.Razorpay) {
+ if (typeof window !=="undefined"&& window.Razorpay) {
  const rzp = new window.Razorpay(options);
  rzp.open();
  } else {
  // Mock success fallback for local development without external script loading
  const mockVerify = await apiRequest<any>("/payments/verify", {
- method: "POST",
+ method:"POST",
  body: JSON.stringify({
  razorpay_order_id: orderRes.order_id,
  razorpay_payment_id: `pay_mock_${Date.now()}`,
@@ -121,7 +121,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  router.push(`/success?payment_id=${mockVerify.payment_id}&order_id=${orderRes.order_id}&course=${encodeURIComponent(course.title)}`);
  }
  } catch (err: any) {
- setErrorMsg(err.message || "Failed to initialize payment order.");
+ setErrorMsg(err.message ||"Failed to initialize payment order.");
  setSubmitting(false);
  }
  };
@@ -129,7 +129,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  if (loading) {
  return (
  <div className="flex justify-center items-center py-32">
- <Loader2 className="w-8 h-8 text-ember-500 animate-spin" />
+ <Loader2 className="w-8 h-8 text-ember-500 animate-spin"/>
  </div>
  );
  }
@@ -139,8 +139,8 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  <div className="max-w-4xl mx-auto px-4 py-20 text-center space-y-4">
  <h2 className="text-2xl font-bold text-white">Course Not Found</h2>
  <p className="text-ink-400 text-sm">The course you are looking for does not exist or has been removed.</p>
- <Link href="/courses" className="inline-flex items-center gap-2 text-ember-400 font-semibold text-sm">
- <ArrowLeft className="w-4 h-4" /> Back to Course Catalog
+ <Link href="/courses"className="inline-flex items-center gap-2 text-ember-400 font-semibold text-sm">
+ <ArrowLeft className="w-4 h-4"/> Back to Course Catalog
  </Link>
  </div>
  );
@@ -148,8 +148,8 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
 
  return (
  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
- <Link href="/courses" className="inline-flex items-center gap-2 text-xs font-semibold text-ink-400 hover:text-white transition">
- <ArrowLeft className="w-4 h-4" /> Back to All Courses
+ <Link href="/courses"className="inline-flex items-center gap-2 text-xs font-semibold text-ink-400 hover:text-white transition">
+ <ArrowLeft className="w-4 h-4"/> Back to All Courses
  </Link>
 
  <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -161,7 +161,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  {course.level}
  </span>
  <span className="text-ink-400 text-xs flex items-center gap-1 font-medium">
- <Clock className="w-3.5 h-3.5" />
+ <Clock className="w-3.5 h-3.5"/>
  {course.duration}
  </span>
  </div>
@@ -192,19 +192,19 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  <h3 className="text-lg font-bold text-white">Curriculum & Learning Outcomes</h3>
  <ul className="space-y-3 text-sm text-ink-300">
  <li className="flex items-start gap-3">
- <CheckCircle2 className="w-5 h-5 text-ember-400 shrink-0 mt-0.5" />
+ <CheckCircle2 className="w-5 h-5 text-ember-400 shrink-0 mt-0.5"/>
  <span>Production application architecture using Next.js 15 & FastAPI backend.</span>
  </li>
  <li className="flex items-start gap-3">
- <CheckCircle2 className="w-5 h-5 text-ember-400 shrink-0 mt-0.5" />
+ <CheckCircle2 className="w-5 h-5 text-ember-400 shrink-0 mt-0.5"/>
  <span>REST API design, JWT authentication, and database ORM patterns.</span>
  </li>
  <li className="flex items-start gap-3">
- <CheckCircle2 className="w-5 h-5 text-ember-400 shrink-0 mt-0.5" />
+ <CheckCircle2 className="w-5 h-5 text-ember-400 shrink-0 mt-0.5"/>
  <span>Payment gateway integration (Razorpay Test Mode) and signature verification.</span>
  </li>
  <li className="flex items-start gap-3">
- <CheckCircle2 className="w-5 h-5 text-ember-400 shrink-0 mt-0.5" />
+ <CheckCircle2 className="w-5 h-5 text-ember-400 shrink-0 mt-0.5"/>
  <span>Containerization with Docker & automated cloud deployment on Railway & Vercel.</span>
  </li>
  </ul>
@@ -224,17 +224,17 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  onClick={() => setShowCheckoutModal(true)}
  className="w-full py-3.5 font-bold bg-ember-600 hover:bg-ember-500 text-white shadow-ember-600/30 flex items-center justify-center gap-2 transition"
  >
- <CreditCard className="w-4 h-4" />
+ <CreditCard className="w-4 h-4"/>
  Enroll & Pay Now
  </button>
 
  <div className="space-y-3 pt-4 border-t border-ink-800 text-xs text-ink-400">
  <div className="flex items-center gap-2">
- <ShieldCheck className="w-4 h-4 text-ember-400" />
+ <ShieldCheck className="w-4 h-4 text-ember-400"/>
  <span>Razorpay Test Mode 256-bit Encrypted Checkout</span>
  </div>
  <div className="flex items-center gap-2">
- <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+ <CheckCircle2 className="w-4 h-4 text-emerald-400"/>
  <span>Instant Enrollment Access</span>
  </div>
  </div>
@@ -251,7 +251,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  <div className="flex items-center gap-2 mb-1">
  <h3 className="text-lg font-bold text-white">Complete Registration</h3>
  <span className="px-2 py-0.5 rounded flex items-center gap-1 bg-emerald-500/10 text-emerald-400 text-[10px] uppercase font-bold tracking-wider">
- <ShieldCheck className="w-3 h-3" /> Secure
+ <ShieldCheck className="w-3 h-3"/> Secure
  </span>
  </div>
  <p className="text-xs text-ink-400">{course.title}</p>
@@ -273,7 +273,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  <form onSubmit={handleCreateOrder} className="space-y-4 text-sm">
  <div className="space-y-1.5">
  <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
- <User className="w-3.5 h-3.5 text-ember-400" /> Full Name *
+ <User className="w-3.5 h-3.5 text-ember-400"/> Full Name *
  </label>
  <input
  type="text"
@@ -287,7 +287,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
 
  <div className="space-y-1.5">
  <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
- <Mail className="w-3.5 h-3.5 text-ember-400" /> Email Address *
+ <Mail className="w-3.5 h-3.5 text-ember-400"/> Email Address *
  </label>
  <input
  type="email"
@@ -301,7 +301,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
 
  <div className="space-y-1.5">
  <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
- <Phone className="w-3.5 h-3.5 text-ember-400" /> Phone Number *
+ <Phone className="w-3.5 h-3.5 text-ember-400"/> Phone Number *
  </label>
  <input
  type="tel"
@@ -326,10 +326,10 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  >
  {submitting ? (
  <>
- <Loader2 className="w-4 h-4 animate-spin" /> Processing...
+ <Loader2 className="w-4 h-4 animate-spin"/> Processing...
  </>
  ) : (
- "Proceed to Pay"
+"Proceed to Pay"
  )}
  </button>
  </div>

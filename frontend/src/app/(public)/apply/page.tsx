@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { GraduationCap, User, Mail, Phone, Building2, BookOpen, Calendar, Code, Clock, ArrowRight, Loader2, CheckCircle } from "lucide-react";
-import { apiRequest } from "@/lib/api-client";
+import { useState } from"react";
+import { useRouter } from"next/navigation";
+import { GraduationCap, User, Mail, Phone, Building2, BookOpen, Calendar, Code, Clock, ArrowRight, Loader2, CheckCircle } from"lucide-react";
+import { apiRequest } from"@/lib/api-client";
+import { FadeIn } from "@/components/animations/FadeIn";
 
 export default function InternshipApplyPage() {
  const router = useRouter();
@@ -11,14 +12,14 @@ export default function InternshipApplyPage() {
  const [errorMsg, setErrorMsg] = useState("");
 
  const [formData, setFormData] = useState({
- full_name: "",
- email: "",
- phone: "",
- college: "",
- degree: "",
- year_of_study: "3rd Year",
- skills: "",
- duration: "3 Months",
+ full_name:"",
+ email:"",
+ phone:"",
+ college:"",
+ degree:"",
+ year_of_study:"3rd Year",
+ skills:"",
+ duration:"3 Months",
  });
 
  const handleSubmit = async (e: React.FormEvent) => {
@@ -33,7 +34,7 @@ export default function InternshipApplyPage() {
  .filter(Boolean);
 
  await apiRequest("/applications", {
- method: "POST",
+ method:"POST",
  body: JSON.stringify({
  full_name: formData.full_name,
  email: formData.email,
@@ -48,7 +49,7 @@ export default function InternshipApplyPage() {
 
  router.push(`/success?type=application&name=${encodeURIComponent(formData.full_name)}&duration=${encodeURIComponent(formData.duration)}`);
  } catch (err: any) {
- setErrorMsg(err.message || "Failed to submit application. Please try again.");
+ setErrorMsg(err.message ||"Failed to submit application. Please try again.");
  setSubmitting(false);
  }
  };
@@ -56,9 +57,10 @@ export default function InternshipApplyPage() {
  return (
  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
  {/* HEADER */}
+ <FadeIn delay={0.1} direction="up">
  <div className="text-center space-y-4 max-w-2xl mx-auto">
  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-ember-500/10 border border-ember-500/20 text-ember-400 text-xs font-semibold uppercase tracking-wider">
- <GraduationCap className="w-4 h-4" />
+ <GraduationCap className="w-4 h-4"/>
  Pre-Hire Internship Program 2026
  </div>
  <h1 className="text-4xl font-extrabold text-white tracking-tight">
@@ -68,9 +70,11 @@ export default function InternshipApplyPage() {
  Join our hands-on engineering track. Gain experience building production applications with 1:1 senior developer guidance.
  </p>
  </div>
+ </FadeIn>
 
  {/* APPLICATION FORM */}
- <div className="glass-card p-8 border border-ink-800 space-y-8 ">
+ <FadeIn delay={0.2} direction="up">
+ <div className="glass-card p-8 border border-ink-800 space-y-8">
  {errorMsg && (
  <div className="p-4 bg-red-500/10 border border-red-500/30 text-red-400 text-sm">
  {errorMsg}
@@ -87,7 +91,7 @@ export default function InternshipApplyPage() {
  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
  <div className="space-y-1.5">
  <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
- <User className="w-3.5 h-3.5 text-ember-400" /> Full Name *
+ <User className="w-3.5 h-3.5 text-ember-400"/> Full Name *
  </label>
  <input
  type="text"
@@ -101,7 +105,7 @@ export default function InternshipApplyPage() {
 
  <div className="space-y-1.5">
  <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
- <Mail className="w-3.5 h-3.5 text-ember-400" /> Email Address *
+ <Mail className="w-3.5 h-3.5 text-ember-400"/> Email Address *
  </label>
  <input
  type="email"
@@ -115,7 +119,7 @@ export default function InternshipApplyPage() {
 
  <div className="space-y-1.5 md:col-span-2">
  <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
- <Phone className="w-3.5 h-3.5 text-ember-400" /> Phone Number *
+ <Phone className="w-3.5 h-3.5 text-ember-400"/> Phone Number *
  </label>
  <input
  type="tel"
@@ -138,7 +142,7 @@ export default function InternshipApplyPage() {
  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
  <div className="space-y-1.5 md:col-span-2">
  <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
- <Building2 className="w-3.5 h-3.5 text-ember-400" /> College / University Name *
+ <Building2 className="w-3.5 h-3.5 text-ember-400"/> College / University Name *
  </label>
  <input
  type="text"
@@ -152,7 +156,7 @@ export default function InternshipApplyPage() {
 
  <div className="space-y-1.5">
  <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
- <BookOpen className="w-3.5 h-3.5 text-ember-400" /> Degree & Major *
+ <BookOpen className="w-3.5 h-3.5 text-ember-400"/> Degree & Major *
  </label>
  <input
  type="text"
@@ -166,7 +170,7 @@ export default function InternshipApplyPage() {
 
  <div className="space-y-1.5 md:col-span-3">
  <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
- <Calendar className="w-3.5 h-3.5 text-ember-400" /> Year of Study *
+ <Calendar className="w-3.5 h-3.5 text-ember-400"/> Year of Study *
  </label>
  <select
  value={formData.year_of_study}
@@ -192,7 +196,7 @@ export default function InternshipApplyPage() {
  <div className="space-y-4">
  <div className="space-y-1.5">
  <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
- <Code className="w-3.5 h-3.5 text-ember-400" /> Technical Skills (Comma-separated) *
+ <Code className="w-3.5 h-3.5 text-ember-400"/> Technical Skills (Comma-separated) *
  </label>
  <input
  type="text"
@@ -207,24 +211,24 @@ export default function InternshipApplyPage() {
  {/* DURATION RADIO CARDS */}
  <div className="space-y-2">
  <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
- <Clock className="w-3.5 h-3.5 text-ember-400" /> Preferred Internship Duration *
+ <Clock className="w-3.5 h-3.5 text-ember-400"/> Preferred Internship Duration *
  </label>
  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-1">
- {["1 Month", "3 Months", "6 Months"].map((dur) => (
+ {["1 Month","3 Months","6 Months"].map((dur) => (
  <div
  key={dur}
  onClick={() => setFormData({ ...formData, duration: dur })}
  className={`cursor-pointer p-4 border text-center transition ${
  formData.duration === dur
- ? "bg-ember-600/20 border-ember-500 text-white shadow-ember-500/10"
- : "bg-ink-900/60 border-ink-800 text-ink-400 hover:border-ink-700"
+ ?"bg-ember-600/20 border-ember-500 text-white"
+ :"bg-ink-900/60 border-ink-800 text-ink-400 hover:border-ink-700"
  }`}
  >
  <div className="font-bold text-base text-white">{dur}</div>
  <div className="text-[11px] text-ink-400 mt-1">
- {dur === "1 Month" && "Foundation Bootcamp & Mentorship"}
- {dur === "3 Months" && "Standard Industrial Internship"}
- {dur === "6 Months" && "Advanced Product Co-Op Program"}
+ {dur ==="1 Month"&&"Foundation Bootcamp & Mentorship"}
+ {dur ==="3 Months"&&"Standard Industrial Internship"}
+ {dur ==="6 Months"&&"Advanced Product Co-Op Program"}
  </div>
  </div>
  ))}
@@ -237,21 +241,22 @@ export default function InternshipApplyPage() {
  <button
  type="submit"
  disabled={submitting}
- className="w-full py-4 text-base font-bold bg-ember-600 hover:bg-ember-500 text-white shadow-ember-600/30 flex items-center justify-center gap-2 transition disabled:opacity-50"
+ className="w-full py-4 text-base font-bold bg-ember-600 hover:bg-ember-500 text-white flex items-center justify-center gap-2 transition disabled:opacity-50"
  >
  {submitting ? (
  <>
- <Loader2 className="w-5 h-5 animate-spin" /> Submitting Application...
+ <Loader2 className="w-5 h-5 animate-spin"/> Submitting Application...
  </>
  ) : (
  <>
- Submit Application <ArrowRight className="w-5 h-5" />
+ Submit Application <ArrowRight className="w-5 h-5"/>
  </>
  )}
  </button>
  </div>
  </form>
  </div>
+ </FadeIn>
  </div>
  );
 }

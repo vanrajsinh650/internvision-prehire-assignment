@@ -1,9 +1,9 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import Link from "next/link";
-import { CheckCircle2, ArrowRight, ShieldCheck, Download, Sparkles } from "lucide-react";
-import { Suspense } from "react";
+import { useSearchParams } from"next/navigation";
+import Link from"next/link";
+import { CheckCircle2, ArrowRight, ShieldCheck, Download, Sparkles } from"lucide-react";
+import { Suspense } from"react";
 
 function SuccessContent() {
  const searchParams = useSearchParams();
@@ -14,25 +14,25 @@ function SuccessContent() {
  const orderId = searchParams.get("order_id");
  const courseName = searchParams.get("course");
 
- const isApplication = type === "application";
+ const isApplication = type ==="application";
 
  return (
  <div className="max-w-2xl mx-auto px-4 py-20 text-center space-y-8">
  <div className="w-20 h-20 bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto shadow-emerald-500/20">
- <CheckCircle2 className="w-10 h-10" />
+ <CheckCircle2 className="w-10 h-10"/>
  </div>
 
  <div className="space-y-3">
  <span className="px-3 py-1 text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
- {isApplication ? "Application Received" : "Payment Verified & Enrollment Confirmed"}
+ {isApplication ?"Application Received":"Payment Verified & Enrollment Confirmed"}
  </span>
  <h1 className="text-3xl sm:text-4xl font-extrabold text-white">
- {isApplication ? `Welcome Aboard, ${name || "Applicant"}!` : "Registration Successful!"}
+ {isApplication ? `Welcome Aboard, ${name ||"Applicant"}!` :"Registration Successful!"}
  </h1>
  <p className="text-ink-400 text-sm max-w-md mx-auto leading-relaxed">
  {isApplication
- ? `Your application for the ${duration || "3 Months"} Internship Track has been submitted to the admissions team.`
- : `You have successfully enrolled in ${courseName || "your selected course"}. A receipt and onboarding instructions have been dispatched.`}
+ ? `Your application for the ${duration ||"3 Months"} Internship Track has been submitted to the admissions team.`
+ : `You have successfully enrolled in ${courseName ||"your selected course"}. A receipt and onboarding instructions have been dispatched.`}
  </p>
  </div>
 
@@ -46,11 +46,11 @@ function SuccessContent() {
  <>
  <div className="flex justify-between text-ink-400">
  <span>Razorpay Payment ID:</span>
- <span className="font-mono text-ink-200">{paymentId || "N/A"}</span>
+ <span className="font-mono text-ink-200">{paymentId ||"N/A"}</span>
  </div>
  <div className="flex justify-between text-ink-400">
  <span>Razorpay Order ID:</span>
- <span className="font-mono text-ink-200">{orderId || "N/A"}</span>
+ <span className="font-mono text-ink-200">{orderId ||"N/A"}</span>
  </div>
  <div className="flex justify-between text-ink-400">
  <span>Enrolled Course:</span>
@@ -77,7 +77,7 @@ function SuccessContent() {
  href="/courses"
  className="w-full sm:w-auto px-6 py-3 font-semibold bg-ember-600 hover:bg-ember-500 text-white flex items-center justify-center gap-2 transition"
  >
- Explore More Courses <ArrowRight className="w-4 h-4" />
+ Explore More Courses <ArrowRight className="w-4 h-4"/>
  </Link>
  <Link
  href="/"

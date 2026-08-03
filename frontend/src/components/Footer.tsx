@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { Sparkles, ExternalLink, MessageCircle, Users, Mail } from "lucide-react";
+import Link from"next/link";
+import { Sparkles, ExternalLink, MessageCircle, Users, Mail } from"lucide-react";
 
 export default function Footer() {
  return (
@@ -7,9 +7,9 @@ export default function Footer() {
  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
  <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
  <div className="space-y-4">
- <Link href="/" className="flex items-center gap-2 font-bold text-lg text-white">
+ <Link href="/"className="flex items-center gap-2 font-bold text-lg text-white">
  <div className="w-8 h-8 bg-ember-600 flex items-center justify-center text-white">
- <Sparkles className="w-4 h-4" />
+ <Sparkles className="w-4 h-4"/>
  </div>
  <span>Intern<span className="text-ember-500">Vision</span></span>
  </Link>
@@ -21,10 +21,10 @@ export default function Footer() {
  <div>
  <h4 className="font-semibold text-white mb-4 text-xs uppercase tracking-wider">Quick Links</h4>
  <ul className="space-y-2">
- <li><Link href="/" className="hover:text-white transition">Home</Link></li>
- <li><Link href="/courses" className="hover:text-white transition">Course Catalog</Link></li>
- <li><Link href="/apply" className="hover:text-white transition">Internship Application</Link></li>
- <li><Link href="/contact" className="hover:text-white transition">Contact Support</Link></li>
+ <li><Link href="/"className="hover:text-white transition">Home</Link></li>
+ <li><Link href="/courses"className="hover:text-white transition">Course Catalog</Link></li>
+ <li><Link href="/apply"className="hover:text-white transition">Internship Application</Link></li>
+ <li><Link href="/contact"className="hover:text-white transition">Contact Support</Link></li>
  </ul>
  </div>
 
@@ -40,17 +40,17 @@ export default function Footer() {
  <div>
  <h4 className="font-semibold text-white mb-4 text-xs uppercase tracking-wider">Connect</h4>
  <div className="flex gap-4 mb-4">
- <a href="#" className="w-8 h-8 bg-ink-800 flex items-center justify-center hover:bg-ink-700 hover:text-white transition">
- <ExternalLink className="w-4 h-4" />
+ <a href="#"className="w-8 h-8 bg-ink-800 flex items-center justify-center hover:bg-ink-700 hover:text-white transition">
+ <ExternalLink className="w-4 h-4"/>
  </a>
- <a href="#" className="w-8 h-8 bg-ink-800 flex items-center justify-center hover:bg-ink-700 hover:text-white transition">
- <MessageCircle className="w-4 h-4" />
+ <a href="#"className="w-8 h-8 bg-ink-800 flex items-center justify-center hover:bg-ink-700 hover:text-white transition">
+ <MessageCircle className="w-4 h-4"/>
  </a>
- <a href="#" className="w-8 h-8 bg-ink-800 flex items-center justify-center hover:bg-ink-700 hover:text-white transition">
- <Users className="w-4 h-4" />
+ <a href="#"className="w-8 h-8 bg-ink-800 flex items-center justify-center hover:bg-ink-700 hover:text-white transition">
+ <Users className="w-4 h-4"/>
  </a>
- <a href="mailto:support@internvision.tech" className="w-8 h-8 bg-ink-800 flex items-center justify-center hover:bg-ink-700 hover:text-white transition">
- <Mail className="w-4 h-4" />
+ <a href="mailto:support@internvision.tech"className="w-8 h-8 bg-ink-800 flex items-center justify-center hover:bg-ink-700 hover:text-white transition">
+ <Mail className="w-4 h-4"/>
  </a>
  </div>
  <p className="text-xs text-ink-500">© 2026 InternVision Tech Inc. All rights reserved.</p>

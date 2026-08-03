@@ -16,5 +16,5 @@
 }
 
 .gradient-text {
- @apply bg-clip-text text-transparent bg-gradient-to-r from-ember-400 to-ember-600;
+ @apply bg-clip-text text-transparent bg-ink-900 from-ember-400 to-ember-600;
 }

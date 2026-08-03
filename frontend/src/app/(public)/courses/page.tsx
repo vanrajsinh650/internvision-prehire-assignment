@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { BookOpen, Search, Filter, Loader2 } from "lucide-react";
-import { Course } from "@/types";
-import { apiRequest } from "@/lib/api-client";
-import { CourseCard } from "@/components/cards/CourseCard";
+import { useEffect, useState } from"react";
+import { BookOpen, Search, Filter, Loader2 } from"lucide-react";
+import { Course } from"@/types";
+import { apiRequest } from"@/lib/api-client";
+import { CourseCard } from"@/components/cards/CourseCard";
+import { FadeIn } from "@/components/animations/FadeIn";
 
 export default function CoursesPage() {
  const [courses, setCourses] = useState<Course[]>([]);
@@ -19,9 +20,9 @@ export default function CoursesPage() {
  const fetchCourses = async () => {
  setLoading(true);
  try {
- let endpoint = "/courses";
+ let endpoint ="/courses";
  const params = new URLSearchParams();
- if (levelFilter !== "all") params.set("level", levelFilter);
+ if (levelFilter !=="all") params.set("level", levelFilter);
  if (params.toString()) endpoint += `?${params.toString()}`;
 
  const data = await apiRequest<Course[]>(endpoint);
@@ -40,6 +41,7 @@ export default function CoursesPage() {
 
  return (
  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
+ <FadeIn delay={0.1} direction="up">
  <div className="text-center space-y-4 max-w-3xl mx-auto">
  <h1 className="text-4xl font-extrabold text-white tracking-tight">
  Explore Industry <span className="gradient-text">Bootcamps</span>
@@ -48,10 +50,12 @@ export default function CoursesPage() {
  Comprehensive, project-driven training programs engineered to make you job-ready.
  </p>
  </div>
+ </FadeIn>
 
+ <FadeIn delay={0.2} direction="up">
  <div className="glass-card p-4 flex flex-col md:flex-row gap-4 items-center justify-between">
  <div className="relative w-full md:w-96">
- <Search className="w-4 h-4 absolute left-3.5 top-3.5 text-ink-400" />
+ <Search className="w-4 h-4 absolute left-3.5 top-3.5 text-ink-400"/>
  <input
  type="text"
  placeholder="Search courses or technologies..."
@@ -62,7 +66,7 @@ export default function CoursesPage() {
  </div>
 
  <div className="flex items-center gap-3 w-full md:w-auto">
- <Filter className="w-4 h-4 text-ink-400" />
+ <Filter className="w-4 h-4 text-ink-400"/>
  <span className="text-xs text-ink-400 font-medium hidden sm:inline">Level:</span>
  <select
  value={levelFilter}
@@ -76,23 +80,26 @@ export default function CoursesPage() {
  </select>
  </div>
  </div>
+ </FadeIn>
 
  {loading ? (
  <div className="flex justify-center items-center py-24">
- <Loader2 className="w-8 h-8 text-ember-500 animate-spin" />
+ <Loader2 className="w-8 h-8 text-ember-500 animate-spin"/>
  </div>
  ) : filteredCourses.length === 0 ? (
  <div className="glass-card p-12 text-center text-ink-400 space-y-2">
- <BookOpen className="w-8 h-8 mx-auto text-ink-500" />
+ <BookOpen className="w-8 h-8 mx-auto text-ink-500"/>
  <p className="font-semibold text-white">No courses match your search criteria.</p>
  <p className="text-xs text-ink-400">Try clearing filters or searching for different keywords.</p>
  </div>
  ) : (
+ <FadeIn delay={0.3} direction="up">
  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
  {filteredCourses.map((course) => (
  <CourseCard key={course.id} course={course} />
  ))}
  </div>
+ </FadeIn>
  )}
  </div>
  );

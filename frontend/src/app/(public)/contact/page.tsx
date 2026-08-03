@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import { Mail, Phone, MapPin, Send, CheckCircle2, Sparkles } from "lucide-react";
+import { useState } from"react";
+import { Mail, Phone, MapPin, Send, CheckCircle2, Sparkles } from"lucide-react";
 
 export default function ContactPage() {
  const [submitted, setSubmitted] = useState(false);
- const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
+ const [formData, setFormData] = useState({ name:"", email:"", subject:"", message:""});
 
  const handleSubmit = (e: React.FormEvent) => {
  e.preventDefault();
@@ -28,7 +28,7 @@ export default function ContactPage() {
  <div className="glass-card p-6 space-y-4">
  <div className="flex items-center gap-3">
  <div className="w-10 h-10 bg-ember-600/20 text-ember-400 flex items-center justify-center">
- <Mail className="w-5 h-5" />
+ <Mail className="w-5 h-5"/>
  </div>
  <div>
  <h4 className="text-sm font-bold text-white">Email Us</h4>
@@ -40,7 +40,7 @@ export default function ContactPage() {
  <div className="glass-card p-6 space-y-4">
  <div className="flex items-center gap-3">
  <div className="w-10 h-10 bg-purple-600/20 text-purple-400 flex items-center justify-center">
- <Phone className="w-5 h-5" />
+ <Phone className="w-5 h-5"/>
  </div>
  <div>
  <h4 className="text-sm font-bold text-white">Call Support</h4>
@@ -52,7 +52,7 @@ export default function ContactPage() {
  <div className="glass-card p-6 space-y-4">
  <div className="flex items-center gap-3">
  <div className="w-10 h-10 bg-emerald-600/20 text-emerald-400 flex items-center justify-center">
- <MapPin className="w-5 h-5" />
+ <MapPin className="w-5 h-5"/>
  </div>
  <div>
  <h4 className="text-sm font-bold text-white">Headquarters</h4>
@@ -66,7 +66,7 @@ export default function ContactPage() {
  {submitted ? (
  <div className="text-center py-12 space-y-4">
  <div className="w-16 h-16 bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto">
- <CheckCircle2 className="w-8 h-8" />
+ <CheckCircle2 className="w-8 h-8"/>
  </div>
  <h3 className="text-2xl font-bold text-white">Message Received!</h3>
  <p className="text-ink-400 text-sm max-w-md mx-auto">
@@ -128,7 +128,7 @@ export default function ContactPage() {
  type="submit"
  className="w-full py-3.5 font-bold bg-ember-600 hover:bg-ember-500 text-white shadow-ember-600/30 flex items-center justify-center gap-2 transition"
  >
- <Send className="w-4 h-4" /> Send Message
+ <Send className="w-4 h-4"/> Send Message
  </button>
  </form>
  )}
