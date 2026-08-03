@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Signal, Clock, ArrowRight } from "lucide-react";
+import { Signal, Clock, ArrowRight, Award } from "lucide-react";
 import { Course } from "@/types";
 import { formatINR } from "@/lib/utils";
 
@@ -41,7 +41,9 @@ export function CourseCard({ course }: CourseCardProps) {
 
       <div className="pt-6 mt-6 border-t border-slate-800/80 flex items-center justify-between">
         <div>
-          <div className="text-xs text-slate-500">Course Fee</div>
+          <div className="flex items-center gap-1.5 text-emerald-400/90 text-[10px] uppercase tracking-wider font-bold mb-1">
+            <Award className="w-3 h-3" /> Certificate Included
+          </div>
           <div className="text-2xl font-black text-white">{formatINR(course.price_inr)}</div>
         </div>
 

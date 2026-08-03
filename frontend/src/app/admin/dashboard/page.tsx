@@ -276,14 +276,14 @@ export default function AdminDashboardPage() {
           {/* TABLE */}
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs text-slate-300">
-              <thead className="bg-slate-900/90 text-slate-400 font-semibold uppercase tracking-wider text-[10px] border-b border-slate-800">
+              <thead className="bg-slate-900/60 text-slate-500 font-bold uppercase tracking-wider text-[10px] border-b border-slate-800">
                 <tr>
-                  <th className="p-3">Applicant</th>
-                  <th className="p-3">College & Degree</th>
-                  <th className="p-3">Year</th>
-                  <th className="p-3">Skills</th>
-                  <th className="p-3">Duration</th>
-                  <th className="p-3">Applied Date</th>
+                  <th className="px-3 py-2">Applicant</th>
+                  <th className="px-3 py-2">College & Degree</th>
+                  <th className="px-3 py-2">Year</th>
+                  <th className="px-3 py-2">Skills</th>
+                  <th className="px-3 py-2">Duration</th>
+                  <th className="px-3 py-2">Applied Date</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-800/80">
@@ -302,21 +302,21 @@ export default function AdminDashboardPage() {
                 ) : (
                   appsData.items.map((app) => (
                     <tr key={app.id} className="hover:bg-slate-900/40 transition">
-                      <td className="p-3">
+                      <td className="px-3 py-2">
                         <div className="font-bold text-white">{app.full_name}</div>
                         <div className="text-[11px] text-slate-400">{app.email}</div>
                         <div className="text-[10px] text-slate-500">{app.phone}</div>
                       </td>
-                      <td className="p-3">
+                      <td className="px-3 py-2">
                         <div className="font-medium text-slate-200">{app.college}</div>
                         <div className="text-[11px] text-slate-400">{app.degree}</div>
                       </td>
-                      <td className="p-3">
+                      <td className="px-3 py-2">
                         <span className="px-2 py-0.5 rounded bg-slate-800 text-slate-300">
                           {app.year_of_study}
                         </span>
                       </td>
-                      <td className="p-3">
+                      <td className="px-3 py-2">
                         <div className="flex flex-wrap gap-1 max-w-xs">
                           {app.skills.map((skill) => (
                             <span key={skill} className="px-2 py-0.5 rounded text-[10px] bg-blue-500/10 text-blue-300 border border-blue-500/20">
@@ -325,12 +325,12 @@ export default function AdminDashboardPage() {
                           ))}
                         </div>
                       </td>
-                      <td className="p-3">
+                      <td className="px-3 py-2">
                         <span className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-purple-500/10 text-purple-300 border border-purple-500/20">
                           {app.duration}
                         </span>
                       </td>
-                      <td className="p-3 text-[11px] text-slate-400">
+                      <td className="px-3 py-2 text-[11px] text-slate-400">
                         {new Date(app.created_at).toLocaleDateString()}
                       </td>
                     </tr>
@@ -406,14 +406,14 @@ export default function AdminDashboardPage() {
 
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs text-slate-300">
-              <thead className="bg-slate-900/90 text-slate-400 font-semibold uppercase tracking-wider text-[10px] border-b border-slate-800">
+              <thead className="bg-slate-900/60 text-slate-500 font-bold uppercase tracking-wider text-[10px] border-b border-slate-800">
                 <tr>
-                  <th className="p-3">Order ID</th>
-                  <th className="p-3">Payment ID</th>
-                  <th className="p-3">Student Email</th>
-                  <th className="p-3">Amount (INR)</th>
-                  <th className="p-3">Status</th>
-                  <th className="p-3">Date</th>
+                  <th className="px-3 py-2">Order ID</th>
+                  <th className="px-3 py-2">Payment ID</th>
+                  <th className="px-3 py-2">Student Email</th>
+                  <th className="px-3 py-2">Amount (INR)</th>
+                  <th className="px-3 py-2">Status</th>
+                  <th className="px-3 py-2">Date</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-800/80">
@@ -432,11 +432,11 @@ export default function AdminDashboardPage() {
                 ) : (
                   paymentsData.items.map((pmt) => (
                     <tr key={pmt.id} className="hover:bg-slate-900/40 transition">
-                      <td className="p-3 font-mono text-slate-200">{pmt.order_id}</td>
-                      <td className="p-3 font-mono text-slate-400">{pmt.payment_id || "N/A"}</td>
-                      <td className="p-3 text-white font-medium">{pmt.student_email}</td>
-                      <td className="p-3 font-bold text-white">{formatINR(pmt.amount_inr)}</td>
-                      <td className="p-3">
+                      <td className="px-3 py-2 font-mono text-slate-200">{pmt.order_id}</td>
+                      <td className="px-3 py-2 font-mono text-slate-400">{pmt.payment_id || "N/A"}</td>
+                      <td className="px-3 py-2 text-white font-medium">{pmt.student_email}</td>
+                      <td className="px-3 py-2 font-bold text-white">{formatINR(pmt.amount_inr)}</td>
+                      <td className="px-3 py-2">
                         <span
                           className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase ${
                             pmt.status === "captured"
@@ -449,7 +449,7 @@ export default function AdminDashboardPage() {
                           {pmt.status}
                         </span>
                       </td>
-                      <td className="p-3 text-[11px] text-slate-400">
+                      <td className="px-3 py-2 text-[11px] text-slate-400">
                         {new Date(pmt.created_at).toLocaleDateString()}
                       </td>
                     </tr>

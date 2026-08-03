@@ -248,8 +248,13 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
           <div className="glass-card max-w-md w-full p-6 rounded-2xl space-y-6 border border-slate-700 shadow-2xl relative">
             <div className="flex items-center justify-between border-b border-slate-800 pb-4">
               <div>
-                <h3 className="text-lg font-bold text-white">Complete Registration</h3>
-                <p className="text-xs text-slate-400 mt-0.5">{course.title}</p>
+                <div className="flex items-center gap-2 mb-1">
+                  <h3 className="text-lg font-bold text-white">Complete Registration</h3>
+                  <span className="px-2 py-0.5 rounded flex items-center gap-1 bg-emerald-500/10 text-emerald-400 text-[10px] uppercase font-bold tracking-wider">
+                    <ShieldCheck className="w-3 h-3" /> Secure
+                  </span>
+                </div>
+                <p className="text-xs text-slate-400">{course.title}</p>
               </div>
               <button
                 onClick={() => setShowCheckoutModal(false)}

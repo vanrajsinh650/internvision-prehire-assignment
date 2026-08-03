@@ -22,39 +22,47 @@ export default function HomePage() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-            <Link
-              href="/apply"
-              className="w-full sm:w-auto px-8 py-3.5 rounded-xl font-semibold bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 transition"
-            >
-              Apply For Internship
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+            <div className="flex flex-col items-center">
+              <Link
+                href="/apply"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-xl font-semibold bg-blue-600 hover:bg-blue-500 text-white shadow-xl shadow-blue-600/20 ring-1 ring-blue-500/50 flex items-center justify-center gap-2 transition-all hover:scale-[1.02]"
+              >
+                Apply For Internship
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <p className="text-xs text-slate-500 mt-3 font-medium flex items-center gap-1.5">
+                <ShieldCheck className="w-3.5 h-3.5" /> No credit card required
+              </p>
+            </div>
 
-            <Link
-              href="/courses"
-              className="w-full sm:w-auto px-8 py-3.5 rounded-xl font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 flex items-center justify-center transition"
-            >
-              Explore Courses
-            </Link>
+            <div className="flex flex-col items-center">
+              <Link
+                href="/courses"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-xl font-semibold bg-transparent hover:bg-slate-800/50 text-slate-300 border border-slate-700/50 flex items-center justify-center transition-all"
+              >
+                Explore Courses
+              </Link>
+              <p className="text-xs text-slate-500 mt-3 opacity-0 hidden sm:block">spacer</p>
+            </div>
           </div>
 
-          {/* STATS STRIP */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-16 max-w-4xl mx-auto border-t border-slate-800">
-            <div>
-              <div className="text-3xl font-extrabold text-white">5,000+</div>
-              <div className="text-xs text-slate-400 mt-1">Students Trained</div>
+          {/* STATS STRIP (TRUST BANNER) */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 pb-8 mt-16 max-w-5xl mx-auto bg-slate-900/40 border border-slate-800/60 rounded-3xl backdrop-blur-sm shadow-2xl">
+            <div className="space-y-1">
+              <div className="text-3xl sm:text-4xl font-extrabold text-white">5,000+</div>
+              <div className="text-xs sm:text-sm font-medium text-slate-400">Students Trained</div>
             </div>
-            <div>
-              <div className="text-3xl font-extrabold text-white">94%</div>
-              <div className="text-xs text-slate-400 mt-1">Placement Rate</div>
+            <div className="space-y-1 border-l border-slate-800/50 pl-4 sm:pl-0 sm:border-l-0">
+              <div className="text-3xl sm:text-4xl font-extrabold text-white">94%</div>
+              <div className="text-xs sm:text-sm font-medium text-slate-400">Placement Rate</div>
             </div>
-            <div>
-              <div className="text-3xl font-extrabold text-white">4.9/5</div>
-              <div className="text-xs text-slate-400 mt-1">Student Satisfaction</div>
+            <div className="space-y-1 pt-4 border-t border-slate-800/50 sm:pt-0 sm:border-t-0 md:border-l md:border-slate-800/50 md:pl-4">
+              <div className="text-3xl sm:text-4xl font-extrabold text-white">4.9/5</div>
+              <div className="text-xs sm:text-sm font-medium text-slate-400">Student Satisfaction</div>
             </div>
-            <div>
-              <div className="text-3xl font-extrabold text-white">100+</div>
-              <div className="text-xs text-slate-400 mt-1">Hiring Partners</div>
+            <div className="space-y-1 pt-4 border-t border-slate-800/50 border-l border-slate-800/50 pl-4 sm:pt-0 sm:border-t-0 md:border-l md:border-slate-800/50 md:pl-4">
+              <div className="text-3xl sm:text-4xl font-extrabold text-white">100+</div>
+              <div className="text-xs sm:text-sm font-medium text-slate-400">Hiring Partners</div>
             </div>
           </div>
         </div>
