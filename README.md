@@ -34,6 +34,27 @@ graph TD
     Backend <-->|Process Payments| Razorpay
 ```
 
+---
+
+## 📸 Platform Screenshots
+
+### 1. Home Page Hero Section
+![Home Page Hero](docs/screenshots/hero.png)
+
+### 2. Course Catalog & Syllabus Details
+![Course Catalog](docs/screenshots/courses.png)
+
+### 3. Pre-Hire Internship Application Form
+![Internship Application](docs/screenshots/internship_apply.png)
+
+### 4. Contact & Support Portal
+![Contact Portal](docs/screenshots/contact.png)
+
+### 5. Admin Dashboard & Applicant Analytics
+![Admin Dashboard](docs/screenshots/admin_dashboard.png)
+
+---
+
 ## 🎨 Human-Centered Brutalist Design Philosophy
 
 This project intentionally rejects generic "AI slop" aesthetics (floating purple blurs, soft glassmorphism gradients, and generic cards) in favor of an **assertive, human-centered brutalist design system**:
