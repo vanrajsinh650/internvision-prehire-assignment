@@ -1,7 +1,14 @@
 # CLAUDE.md - InternVision Tech Development Instructions
 
-## Git Commit Workflow Requirement
-- **CRITICAL**: Commit immediately after completing **EVERY SMALL TASK** or feature edit. Maintain granular git commit history.
+## Git Commit Workflow Rules
+1. **Frequency**: Create a commit whenever a meaningful small functionality or feature block is completed.
+2. **Commit Message Format**:
+   - Write clear, simple, human-understandable commit messages.
+   - **DO NOT** use AI-generated prefixes like `feat:`, `fix:`, `docs:`, `chore:`, `refactor:` at the beginning of commit messages.
+   - Example good commit messages:
+     - `Add course search and filter components`
+     - `Implement Razorpay HMAC signature verification endpoint`
+     - `Update Admin dashboard table pagination controls`
 
 ## Build & Test Commands
 ### Backend
