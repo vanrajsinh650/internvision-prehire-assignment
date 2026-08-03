@@ -68,6 +68,17 @@ This project intentionally rejects generic "AI slop" aesthetics (floating purple
 
 ---
 
+## 🌐 Live Deployment & Infrastructure
+
+| Component | Platform | Configuration & Details |
+| :--- | :--- | :--- |
+| **Frontend** | **Vercel** | Next.js 15 (App Router), React 19, Edge Runtime & Client Components |
+| **Backend** | **Render** | FastAPI (Python 3.11), Uvicorn ASGI Server |
+| **Database** | **Supabase PostgreSQL** | SQLAlchemy 2.0 ORM, IPv4 Connection Pooler (`:6543`) |
+| **Payments** | **Razorpay** | Test Mode API Integration, HMAC-SHA256 verification |
+
+---
+
 ## 🛠️ Tech Stack & Architecture
 
 | Layer | Technology | Key Usage |
@@ -77,7 +88,7 @@ This project intentionally rejects generic "AI slop" aesthetics (floating purple
 | **Backend** | **FastAPI (Python 3.11)** | Async REST API, Pydantic v2 validation, Uvicorn |
 | **Database** | **PostgreSQL & Supabase** | Session ORM via SQLAlchemy 2.0, IPv4 Pooler (:6543) |
 | **Authentication**| **JWT (JSON Web Tokens)** | Passlib (Bcrypt) password hashing, AuthGuard |
-| **Payments** | **Razorpay SDK** | Test/Live mode checkout, HMAC-SHA256 verification |
+| **Payments** | **Razorpay SDK** | Test Mode checkout, HMAC-SHA256 verification |
 | **Exports** | **OpenPyXL** | Native Excel (.xlsx) report generation |
 
 ---
