@@ -4,7 +4,7 @@ import Link from"next/link";
 import Image from"next/image";
 import { usePathname } from"next/navigation";
 import { useState } from"react";
-import { Sparkles, BookOpen, GraduationCap, Phone, Shield, Menu, X } from"lucide-react";
+import { Sparkles, BookOpen, GraduationCap, Phone, Shield, Menu, X, Home } from"lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
@@ -22,14 +22,15 @@ export default function Navbar() {
  >
  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
  <Link href="/"className="flex items-center gap-2 font-bold text-xl tracking-tight">
- <Image src="/logo.jpg" alt="InternVision Logo" width={160} height={40} className="h-8 w-auto object-contain" />
+ <Image src="/logo.jpg" alt="InternVision Logo" width={160} height={40} className="h-8 w-auto object-contain mix-blend-screen invert hue-rotate-180 brightness-110" />
  </Link>
 
  <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
  <Link
  href="/"
- className={`transition-colors ${isActive('/') ? 'text-brand-400 font-semibold' : 'text-ink-300 hover:text-white'}`}
+ className={`flex items-center gap-1.5 transition-colors ${isActive('/') ? 'text-brand-400 font-semibold' : 'text-ink-300 hover:text-white'}`}
  >
+ <Home className="w-4 h-4"/>
  Home
  </Link>
  <Link

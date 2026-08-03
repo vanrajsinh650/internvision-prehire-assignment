@@ -9,7 +9,7 @@ export default function Footer() {
  <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
  <div className="space-y-4">
  <Link href="/"className="flex items-center gap-2 font-bold text-lg text-white">
- <Image src="/logo.jpg" alt="InternVision Logo" width={140} height={36} className="h-7 w-auto object-contain" />
+ <Image src="/logo.jpg" alt="InternVision Logo" width={140} height={36} className="h-7 w-auto object-contain mix-blend-screen invert hue-rotate-180 brightness-110" />
  </Link>
  <p className="text-ink-400 text-xs leading-relaxed">
  Empowering students with industry-grade software engineering bootcamps, hands-on internships, and career placement mentorship.
