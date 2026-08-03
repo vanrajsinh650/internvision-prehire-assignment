@@ -12,95 +12,27 @@
 
 ## 📐 System Architecture & Software Workflow
 
-### 1. High-Level Architecture Diagram
 ```mermaid
 graph TD
-    subgraph Client ["🌐 Client Layer (Vercel)"]
-        User["User / Student Browser"]
-        NextApp["Next.js 15 App Router\n(React 19 + Tailwind CSS)"]
-    end
+    %% Styling
+    classDef client fill:#fafafa,stroke:#333,stroke-width:2px,color:#000,font-weight:bold
+    classDef server fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#000,font-weight:bold
+    classDef database fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#000,font-weight:bold
+    classDef payment fill:#fee2e2,stroke:#dc2626,stroke-width:2px,color:#000,font-weight:bold
 
-    subgraph API ["⚙️ Backend Layer (FastAPI / Render)"]
-        FastAPI["FastAPI Uvicorn Application"]
-        Middleware["Logging & Request-ID Middleware\n(X-Request-ID / Latency Tracker)"]
-        JWTAuth["JWT Authentication Guard\n(Passlib / Bcrypt)"]
-    end
+    %% Nodes
+    User((🧑‍🎓 User / Admin)):::client
+    Frontend[🌐 Next.js Frontend]:::client
+    Backend[⚙️ FastAPI Backend]:::server
+    DB[(🗄️ PostgreSQL Database)]:::database
+    Razorpay{💳 Razorpay API}:::payment
 
-    subgraph Integration ["💳 Payment Gateway"]
-        Razorpay["Razorpay Payment Gateway API\n(HMAC SHA-256 Signature Verification)"]
-    end
-
-    subgraph Data ["🗄️ Database Layer (Supabase)"]
-        Pooler["Supabase Connection Pooler\n(aws-0-ap-southeast-1.pooler.supabase.com:6543)"]
-        Postgres[(PostgreSQL Database\nCourses, Applications, Payments, Admin)]
-    end
-
-    User <-->|HTTPS / REST API| NextApp
-    NextApp <-->|JSON / REST| FastAPI
-    FastAPI --> Middleware
-    Middleware --> JWTAuth
-    FastAPI <-->|Razorpay SDK| Razorpay
-    FastAPI <-->|SQLAlchemy ORM (Connection Pool)| Pooler
-    Pooler <--> Postgres
+    %% Flow
+    User -->|Interacts with UI| Frontend
+    Frontend <-->|REST API Calls| Backend
+    Backend <-->|CRUD Operations| DB
+    Backend <-->|Process Payments| Razorpay
 ```
-
----
-
-### 2. Payment & Course Enrollment Sequence Diagram
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Student
-    participant Frontend as Next.js Frontend
-    participant Backend as FastAPI Backend
-    participant Razorpay as Razorpay API
-    participant DB as PostgreSQL (Supabase)
-
-    Student->>Frontend: Selects Course & Clicks "Enroll & Pay Now"
-    Frontend->>Frontend: Fills Student Info (Zod & React Hook Form)
-    Frontend->>Backend: POST /api/payments/create-order
-    Backend->>DB: Record Registration (Status: Pending)
-    Backend->>Razorpay: Create Order ID
-    Backend-->>Frontend: Return Order ID & Key ID
-    
-    alt Test / Mock Mode
-        Frontend->>Backend: Auto-Verify POST /api/payments/verify (Mock Sig)
-        Backend->>DB: Update Payment (Status: Captured) & Registration (Confirmed)
-        Backend-->>Frontend: Verification Success
-        Frontend-->>Student: Redirect to /success Page
-    else Live Razorpay Gateway
-        Frontend->>Razorpay: Launch Razorpay Checkout Modal
-        Razorpay-->>Student: Display Gateway Modal
-        Student->>Razorpay: Completes Payment / Input OTP
-        Razorpay-->>Frontend: Returns razorpay_payment_id & signature
-        Frontend->>Backend: POST /api/payments/verify
-        Backend->>Backend: Verify HMAC-SHA256 Signature
-        Backend->>DB: Update Payment & Registration Status
-        Backend-->>Frontend: Signature Validated
-        Frontend-->>Student: Redirect to /success Page
-    end
-```
-
----
-
-### 3. Internship Application Workflow
-```mermaid
-flowchart LR
-    A[Student Submits Application] --> B[Zod Input Validation]
-    B -->|Valid| C[POST /api/applications]
-    C --> D[SQLAlchemy ORM Save]
-    D --> E[Supabase DB Persistence]
-    E --> F[Redirect to /success]
-    
-    subgraph Admin Management
-        G[Admin Logs In] --> H[JWT Token Verification]
-        H --> I[View Dashboard Analytics]
-        I --> J[Filter & Manage Applicants]
-        J --> K[Export Applications / Payments as CSV]
-    end
-```
-
----
 
 ## 🎨 Human-Centered Brutalist Design Philosophy
 
