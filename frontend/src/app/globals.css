@@ -3,18 +3,18 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply bg-slate-950 text-slate-100 antialiased min-h-screen font-sans;
-  }
+ body {
+ @apply bg-ink-900 text-ink-50 antialiased min-h-screen font-sans;
+ }
 }
 
 /* Custom scrollbar and glassmorphism helpers */
 .glass-card {
-  background: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+ background: rgba(26, 24, 20, 0.75);
+ backdrop-filter: blur(12px);
+ border: 1px solid rgba(246, 245, 241, 0.1); /* ink-50 */
 }
 
 .gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400;
+ @apply bg-clip-text text-transparent bg-gradient-to-r from-ember-400 to-ember-600;
 }
