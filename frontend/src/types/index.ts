@@ -31,7 +31,7 @@ export interface InternshipApplicationResponse extends InternshipApplicationInpu
 }
 
 export interface OrderCreateResponse {
-  order_id: str;
+  order_id: string;
   amount_inr: number;
   currency: string;
   key_id: string;
