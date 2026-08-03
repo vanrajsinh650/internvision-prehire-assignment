@@ -9,7 +9,7 @@ class ApplicationCreate(BaseModel):
     degree: str
     year_of_study: str
     skills: list[str]
-    duration: str # '1 Month', '3 Months', '6 Months'
+    duration: str
 
 class ApplicationResponse(ApplicationCreate):
     id: int

@@ -1,13 +1,14 @@
 from typing import Optional
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
-from app.core.database import get_db
-from app.models.course import Course
-from app.models.admin import Admin
-from app.schemas.course import CourseCreate, CourseResponse
-from app.api.v1.auth import get_current_admin
+from app.shared.database import get_db
+from app.shared.exceptions import NotFoundException, BadRequestException
+from app.shared.dependencies import get_current_admin
+from app.auth.models import Admin
+from app.courses.models import Course
+from app.courses.schemas import CourseCreate, CourseResponse
 
-router = APIRouter()
+router = APIRouter(prefix="/courses", tags=["Courses"])
 
 @router.get("", response_model=list[CourseResponse])
 def get_courses(
@@ -31,7 +32,7 @@ def get_course(course_identifier: str, db: Session = Depends(get_db)):
         course = db.query(Course).filter(Course.slug == course_identifier).first()
     
     if not course:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Course not found")
+        raise NotFoundException("Course not found")
     return course
 
 @router.post("", response_model=CourseResponse, status_code=status.HTTP_201_CREATED)
@@ -42,7 +43,7 @@ def create_course(
 ):
     existing = db.query(Course).filter(Course.slug == course_in.slug).first()
     if existing:
-        raise HTTPException(status_code=400, detail="Course slug already exists")
+        raise BadRequestException("Course slug already exists")
     
     course = Course(**course_in.model_dump())
     db.add(course)

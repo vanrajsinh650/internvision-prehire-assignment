@@ -1,19 +1,21 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.core.config import settings
-from app.core.database import Base, engine
-from app.api.api import api_router
+from app.shared.database import Base, engine
+from app.auth.router import router as auth_router
+from app.courses.router import router as courses_router
+from app.internship.router import router as internship_router
+from app.payments.router import router as payments_router
+from app.dashboard.router import router as dashboard_router
+from app.export.router import router as export_router
 
-# Create database tables if they don't exist
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
-    title=settings.PROJECT_NAME,
-    version=settings.VERSION,
-    openapi_url=f"{settings.API_V1_STR}/openapi.json"
+    title="InternVision Tech API",
+    version="1.0.0",
+    openapi_url="/api/openapi.json"
 )
 
-# Enable CORS for frontend integration
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -22,13 +24,19 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(api_router, prefix=settings.API_V1_STR)
+# Feature Routers mounted under /api
+app.include_router(auth_router, prefix="/api")
+app.include_router(courses_router, prefix="/api")
+app.include_router(internship_router, prefix="/api")
+app.include_router(payments_router, prefix="/api")
+app.include_router(dashboard_router, prefix="/api")
+app.include_router(export_router, prefix="/api")
 
 @app.get("/")
 def root():
     return {
-        "name": settings.PROJECT_NAME,
-        "version": settings.VERSION,
+        "name": "InternVision Tech API",
+        "version": "1.0.0",
         "status": "online",
         "docs": "/docs"
     }

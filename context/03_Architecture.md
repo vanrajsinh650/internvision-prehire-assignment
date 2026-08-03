@@ -1,4 +1,4 @@
-# 03 System Architecture
+# 03 System Architecture & Feature-Based Organization
 
 ## Overview Architecture
 
@@ -12,7 +12,7 @@
                                               |
                                   +-----------v-----------+
                                   |    FastAPI Backend    |
-                                  | (Python 3.11 / Pydantic)|
+                                  | (Feature-Based Slice) |
                                   +-----+-----+-------+---+
                                         |     |       |
                  +----------------------+     |       +---------------------+
@@ -23,8 +23,19 @@
         +-----------------+          +-----------------+           +-----------------+
 ```
 
-## Communication Patterns
-- Public endpoints: CORS open for frontend domain, rate limited.
-- Protected admin endpoints: `Authorization: Bearer <JWT_TOKEN>` header required.
-- Payment flow: Server-side order generation -> Client SDK execution -> Server-side signature validation.
-- Excel Export: Streaming binary file (`application/vnd.openxmlformats-officiallyformat-officedocument.spreadsheetml.sheet`).
+## Feature-Based Organization
+
+### Backend Structure (`backend/app/`)
+- `auth/` - `router.py`, `models.py`, `schemas.py`
+- `courses/` - `router.py`, `models.py`, `schemas.py`
+- `internship/` - `router.py`, `models.py`, `schemas.py`
+- `payments/` - `router.py`, `gateway.py`, `models.py`, `schemas.py`
+- `dashboard/` - `router.py`, `schemas.py`
+- `export/` - `router.py`, `excel.py`
+- `shared/` - `database.py`, `security.py`, `exceptions.py`, `dependencies.py`
+
+### Frontend Structure (`frontend/src/`)
+- `app/` - Next.js App Router (`(public)/`, `admin/`)
+- `components/` - Organized feature components (`cards/`, `forms/`, `tables/`, `layout/`)
+- `lib/` - `api-client.ts`, `utils.ts`
+- `types/` - `index.ts`

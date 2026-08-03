@@ -1,7 +1,7 @@
 from datetime import datetime
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, JSON
 from sqlalchemy.orm import relationship
-from app.core.database import Base
+from app.shared.database import Base
 
 class Payment(Base):
     __tablename__ = "payments"
@@ -12,7 +12,7 @@ class Payment(Base):
     payment_id = Column(String(255), index=True, nullable=True)
     signature = Column(String(255), nullable=True)
     amount_inr = Column(Integer, nullable=False)
-    status = Column(String(50), default="created") # created, captured, failed
+    status = Column(String(50), default="created")
     student_email = Column(String(255), index=True, nullable=False)
     raw_response = Column(JSON, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)

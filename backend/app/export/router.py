@@ -1,14 +1,14 @@
 from typing import Optional
 from fastapi import APIRouter, Depends, Response
 from sqlalchemy.orm import Session
-from app.core.database import get_db
-from app.models.admin import Admin
-from app.models.application import InternshipApplication
-from app.models.payment import Payment
-from app.services.excel_service import excel_service
-from app.api.v1.auth import get_current_admin
+from app.shared.database import get_db
+from app.shared.dependencies import get_current_admin
+from app.auth.models import Admin
+from app.internship.models import InternshipApplication
+from app.payments.models import Payment
+from app.export.excel import excel_service
 
-router = APIRouter()
+router = APIRouter(prefix="/admin/export", tags=["Excel Export"])
 
 @router.get("/applications")
 def export_applications_excel(

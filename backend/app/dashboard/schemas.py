@@ -7,10 +7,3 @@ class DashboardStats(BaseModel):
     total_payments: int
     successful_payments: int
     pending_applications: int
-
-class PaginatedResponse(BaseModel):
-    total: int
-    page: int
-    limit: int
-    total_pages: int
-    items: list

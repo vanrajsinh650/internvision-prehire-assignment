@@ -1,16 +1,14 @@
-from app.core.database import SessionLocal, Base, engine
-from app.core.security import get_password_hash
-from app.models.admin import Admin
-from app.models.course import Course
-from app.models.application import InternshipApplication
-from app.models.registration import CourseRegistration
-from app.models.payment import Payment
+from app.shared.database import SessionLocal, Base, engine
+from app.shared.security import get_password_hash
+from app.auth.models import Admin
+from app.courses.models import Course, CourseRegistration
+from app.internship.models import InternshipApplication
+from app.payments.models import Payment
 
 def seed_db():
     Base.metadata.create_all(bind=engine)
     db = SessionLocal()
     try:
-        # Seed Admin if not exists
         admin_email = "admin@internvision.tech"
         existing_admin = db.query(Admin).filter(Admin.email == admin_email).first()
         if not existing_admin:
@@ -23,7 +21,6 @@ def seed_db():
             db.add(admin)
             print(f"[SEED] Created default Admin: {admin_email} / Admin@123456")
 
-        # Seed Sample Courses if table empty
         if db.query(Course).count() == 0:
             sample_courses = [
                 Course(
@@ -70,7 +67,6 @@ def seed_db():
             db.add_all(sample_courses)
             print(f"[SEED] Seeded {len(sample_courses)} courses")
 
-        # Seed Sample Applications if empty
         if db.query(InternshipApplication).count() == 0:
             sample_apps = [
                 InternshipApplication(

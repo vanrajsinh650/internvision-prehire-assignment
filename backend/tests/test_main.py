@@ -4,11 +4,10 @@ from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-# Setup test DB environment variable
 os.environ["DATABASE_URL"] = "sqlite:///./test_app.db"
 
 from app.main import app
-from app.core.database import Base, get_db
+from app.shared.database import Base, get_db
 
 SQLALCHEMY_DATABASE_URL = "sqlite:///./test_app.db"
 engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
@@ -26,7 +25,6 @@ app.dependency_overrides[get_db] = override_get_db
 @pytest.fixture(autouse=True)
 def setup_db():
     Base.metadata.create_all(bind=engine)
-    # Seed admin user
     from app.seed import seed_db
     seed_db()
     yield
@@ -40,13 +38,13 @@ def test_read_root():
     assert response.json()["status"] == "online"
 
 def test_get_courses():
-    response = client.get("/api/v1/courses")
+    response = client.get("/api/courses")
     assert response.status_code == 200
     assert isinstance(response.json(), list)
 
 def test_admin_login():
     response = client.post(
-        "/api/v1/auth/login",
+        "/api/auth/login",
         data={"username": "admin@internvision.tech", "password": "Admin@123456"}
     )
     assert response.status_code == 200
@@ -65,23 +63,21 @@ def test_submit_application():
         "skills": ["Python", "FastAPI"],
         "duration": "3 Months"
     }
-    response = client.post("/api/v1/applications", json=payload)
+    response = client.post("/api/applications", json=payload)
     assert response.status_code == 201
     data = response.json()
     assert data["full_name"] == "Test Applicant"
     assert data["duration"] == "3 Months"
 
 def test_admin_stats_protected():
-    # Login to get token
     login_res = client.post(
-        "/api/v1/auth/login",
+        "/api/auth/login",
         data={"username": "admin@internvision.tech", "password": "Admin@123456"}
     )
     token = login_res.json()["access_token"]
 
-    # Request stats with Bearer token
     stats_res = client.get(
-        "/api/v1/admin/stats",
+        "/api/admin/stats",
         headers={"Authorization": f"Bearer {token}"}
     )
     assert stats_res.status_code == 200
@@ -91,13 +87,13 @@ def test_admin_stats_protected():
 
 def test_excel_export():
     login_res = client.post(
-        "/api/v1/auth/login",
+        "/api/auth/login",
         data={"username": "admin@internvision.tech", "password": "Admin@123456"}
     )
     token = login_res.json()["access_token"]
 
     export_res = client.get(
-        "/api/v1/admin/export/applications",
+        "/api/admin/export/applications",
         headers={"Authorization": f"Bearer {token}"}
     )
     assert export_res.status_code == 200

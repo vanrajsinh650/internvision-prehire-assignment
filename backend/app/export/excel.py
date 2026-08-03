@@ -10,9 +10,8 @@ class ExcelService:
         ws = wb.active
         ws.title = "Internship Applications"
 
-        # Styling
         header_font = Font(name="Calibri", size=11, bold=True, color="FFFFFF")
-        header_fill = PatternFill(start_color="1E293B", end_color="1E293B", fill_type="solid") # Dark slate
+        header_fill = PatternFill(start_color="1E293B", end_color="1E293B", fill_type="solid")
         thin_border = Border(
             left=Side(style='thin', color='CBD5E1'),
             right=Side(style='thin', color='CBD5E1'),
@@ -25,7 +24,6 @@ class ExcelService:
         headers = ["ID", "Full Name", "Email", "Phone", "College", "Degree", "Year of Study", "Skills", "Duration", "Status", "Applied At"]
         ws.append(headers)
 
-        # Style header row
         for col_num, header in enumerate(headers, 1):
             cell = ws.cell(row=1, column=col_num)
             cell.font = header_font
@@ -35,7 +33,6 @@ class ExcelService:
         
         ws.row_dimensions[1].height = 26
 
-        # Fill data
         for row_idx, app in enumerate(applications, 2):
             skills_str = ", ".join(app.skills) if isinstance(app.skills, list) else str(app.skills)
             created_str = app.created_at.strftime("%Y-%m-%d %H:%M:%S") if hasattr(app, 'created_at') and app.created_at else ""
@@ -55,7 +52,6 @@ class ExcelService:
             ]
             ws.append(row_data)
 
-            # Format data cells
             for col_idx in range(1, len(headers) + 1):
                 cell = ws.cell(row=row_idx, column=col_idx)
                 cell.border = thin_border
@@ -64,7 +60,6 @@ class ExcelService:
                 else:
                     cell.alignment = alignment_left
 
-        # Adjust column widths dynamically
         for col in ws.columns:
             max_len = max(len(str(cell.value or '')) for cell in col)
             col_letter = get_column_letter(col[0].column)
@@ -81,7 +76,6 @@ class ExcelService:
         ws = wb.active
         ws.title = "Payments History"
 
-        # Styling
         header_font = Font(name="Calibri", size=11, bold=True, color="FFFFFF")
         header_fill = PatternFill(start_color="0F172A", end_color="0F172A", fill_type="solid")
         thin_border = Border(

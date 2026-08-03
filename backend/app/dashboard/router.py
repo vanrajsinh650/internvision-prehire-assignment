@@ -3,25 +3,24 @@ from typing import Optional
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 from sqlalchemy import func
-from app.core.database import get_db
-from app.models.admin import Admin
-from app.models.application import InternshipApplication
-from app.models.registration import CourseRegistration
-from app.models.payment import Payment
-from app.schemas.dashboard import DashboardStats, PaginatedResponse
-from app.schemas.application import ApplicationResponse
-from app.schemas.payment import PaymentResponse
-from app.schemas.course import RegistrationResponse
-from app.api.v1.auth import get_current_admin
+from app.shared.database import get_db
+from app.shared.dependencies import get_current_admin
+from app.auth.models import Admin
+from app.internship.models import InternshipApplication
+from app.courses.models import CourseRegistration
+from app.payments.models import Payment
+from app.dashboard.schemas import DashboardStats
+from app.internship.schemas import ApplicationResponse
+from app.payments.schemas import PaymentResponse
+from app.courses.schemas import RegistrationResponse
 
-router = APIRouter()
+router = APIRouter(prefix="/admin", tags=["Admin Dashboard"])
 
 @router.get("/stats", response_model=DashboardStats)
 def get_dashboard_stats(
     db: Session = Depends(get_db),
     current_admin: Admin = Depends(get_current_admin)
 ):
-    # Total revenue from captured payments
     total_revenue = db.query(func.coalesce(func.sum(Payment.amount_inr), 0))\
                       .filter(Payment.status == "captured").scalar()
 

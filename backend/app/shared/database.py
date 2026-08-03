@@ -1,9 +1,10 @@
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
-from app.core.config import settings
 
-# Adjust sqlite database URL for SQLAlchemy compatibility
-db_url = settings.DATABASE_URL
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./sql_app.db")
+
+db_url = DATABASE_URL
 if db_url.startswith("postgres://"):
     db_url = db_url.replace("postgres://", "postgresql://", 1)
 
