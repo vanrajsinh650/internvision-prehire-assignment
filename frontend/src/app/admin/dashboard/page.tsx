@@ -103,7 +103,7 @@ export default function AdminDashboardPage() {
 
  const handleExportExcel = (type: 'applications' | 'payments') => {
  const token = localStorage.getItem("token");
- const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ||"http://localhost:8000/api/v1";
+ const baseUrl = (process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000/api/v1").replace(/\/$/, "");
  let exportUrl = `${baseUrl}/admin/export/${type}?token=${token}`;
  if (type === 'applications' && appsDuration !=="all") {
  exportUrl += `&duration=${encodeURIComponent(appsDuration)}`;
