@@ -55,26 +55,23 @@ export default function InternshipApplyPage() {
  };
 
  return (
- <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
+ <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-16">
  {/* HEADER */}
- <FadeIn delay={0.1} direction="up">
- <div className="text-center space-y-4 max-w-2xl mx-auto">
- <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs font-semibold uppercase tracking-wider">
+ <div className="text-left space-y-4 max-w-3xl border-l-8 border-brand-500 pl-6 sm:pl-8">
+ <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-500 text-white text-xs font-bold uppercase tracking-widest shadow-[2px_2px_0px_#1a1915]">
  <GraduationCap className="w-4 h-4"/>
  Pre-Hire Internship Program 2026
  </div>
- <h1 className="text-4xl font-extrabold text-white tracking-tight">
+ <h1 className="text-5xl sm:text-6xl font-black text-white tracking-tight uppercase leading-[0.9]">
  Apply For <span className="text-brand-400">Internship</span>
  </h1>
- <p className="text-ink-400 text-sm leading-relaxed">
+ <p className="text-ink-300 text-lg font-medium pt-4 max-w-xl">
  Join our hands-on engineering track. Gain experience building production applications with 1:1 senior developer guidance.
  </p>
  </div>
- </FadeIn>
 
  {/* APPLICATION FORM */}
- <FadeIn delay={0.2} direction="up">
- <div className="bg-ink-950 p-8 border border-ink-800 space-y-8">
+ <div className="bg-ink-950 p-8 sm:p-12 border-2 border-ink-800 space-y-10 shadow-[12px_12px_0px_#1a1915]">
  {errorMsg && (
  <div className="p-4 bg-red-500/10 border border-red-500/30 text-red-400 text-sm">
  {errorMsg}
@@ -237,26 +234,25 @@ export default function InternshipApplyPage() {
  </div>
  </div>
 
- <div className="pt-6">
+ <div className="pt-8">
  <button
  type="submit"
  disabled={submitting}
- className="w-full py-4 text-base font-bold bg-brand-600 hover:bg-brand-500 text-white flex items-center justify-center gap-2 transition disabled:opacity-50"
+ className="w-full py-5 text-xl font-black bg-brand-600 hover:bg-brand-500 text-white shadow-[4px_4px_0px_#ffffff] hover:translate-y-1 hover:shadow-[0px_0px_0px_#ffffff] flex items-center justify-center gap-3 transition-all disabled:opacity-50"
  >
  {submitting ? (
  <>
- <Loader2 className="w-5 h-5 animate-spin"/> Submitting Application...
+ <Loader2 className="w-6 h-6 animate-spin"/> Submitting Application...
  </>
  ) : (
  <>
- Submit Application <ArrowRight className="w-5 h-5"/>
+ Submit Application <ArrowRight className="w-6 h-6"/>
  </>
  )}
  </button>
  </div>
  </form>
  </div>
- </FadeIn>
  </div>
  );
 }

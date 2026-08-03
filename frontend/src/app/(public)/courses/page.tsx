@@ -40,38 +40,39 @@ export default function CoursesPage() {
  );
 
  return (
- <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
- <FadeIn delay={0.1} direction="up">
- <div className="text-center space-y-4 max-w-3xl mx-auto">
- <h1 className="text-4xl font-extrabold text-white tracking-tight">
- Explore Industry <span className="text-brand-400">Bootcamps</span>
+ <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-16">
+ <div className="text-left space-y-4 max-w-4xl border-l-8 border-brand-500 pl-6 sm:pl-10">
+ <h1 className="text-5xl sm:text-7xl font-black text-white tracking-tight uppercase leading-[0.9]">
+ Explore Industry <br/><span className="text-brand-400">Bootcamps</span>
  </h1>
- <p className="text-ink-400 text-sm sm:text-base leading-relaxed">
+ <p className="text-ink-300 text-lg sm:text-xl font-medium pt-4 max-w-2xl">
  Comprehensive, project-driven training programs engineered to make you job-ready.
  </p>
  </div>
- </FadeIn>
 
- <FadeIn delay={0.2} direction="up">
- <div className="bg-ink-950 border border-ink-800 p-4 flex flex-col md:flex-row gap-4 items-center justify-between">
- <div className="relative w-full md:w-96">
- <Search className="w-4 h-4 absolute left-3.5 top-3.5 text-ink-400"/>
+ <div className="bg-ink-950 border-2 border-ink-800 p-6 flex flex-col md:flex-row gap-6 items-end justify-between shadow-[8px_8px_0px_#1a1915]">
+ <div className="w-full md:w-[28rem] space-y-2">
+ <label className="text-xs font-bold text-ink-400 uppercase tracking-widest">Search</label>
+ <div className="relative">
+ <Search className="w-5 h-5 absolute left-4 top-3.5 text-ink-500"/>
  <input
  type="text"
  placeholder="Search courses or technologies..."
  value={search}
  onChange={(e) => setSearch(e.target.value)}
- className="w-full bg-ink-900 border border-ink-700 pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 transition"
+ className="w-full bg-ink-900 border-2 border-ink-700 pl-12 pr-4 py-3 text-base font-medium text-white focus:outline-none focus:border-brand-500 transition-colors"
  />
  </div>
+ </div>
 
- <div className="flex items-center gap-3 w-full md:w-auto">
- <Filter className="w-4 h-4 text-ink-400"/>
- <span className="text-xs text-ink-400 font-medium hidden sm:inline">Level:</span>
+ <div className="w-full md:w-64 space-y-2">
+ <label className="text-xs font-bold text-ink-400 uppercase tracking-widest flex items-center gap-2">
+ <Filter className="w-3.5 h-3.5"/> Filter by Level
+ </label>
  <select
  value={levelFilter}
  onChange={(e) => setLevelFilter(e.target.value)}
- className="bg-ink-900 border border-ink-700 px-4 py-2.5 text-sm text-ink-200 focus:outline-none focus:border-brand-500 transition w-full md:w-auto"
+ className="w-full bg-ink-900 border-2 border-ink-700 px-4 py-3 text-base font-medium text-white focus:outline-none focus:border-brand-500 transition-colors cursor-pointer appearance-none"
  >
  <option value="all">All Levels</option>
  <option value="Beginner">Beginner</option>
@@ -80,26 +81,23 @@ export default function CoursesPage() {
  </select>
  </div>
  </div>
- </FadeIn>
 
  {loading ? (
- <div className="flex justify-center items-center py-24">
- <Loader2 className="w-8 h-8 text-brand-500 animate-spin"/>
+ <div className="flex justify-center items-center py-32">
+ <Loader2 className="w-10 h-10 text-brand-500 animate-spin"/>
  </div>
  ) : filteredCourses.length === 0 ? (
- <div className="bg-ink-950 border border-ink-800 p-12 text-center text-ink-400 space-y-2">
- <BookOpen className="w-8 h-8 mx-auto text-ink-500"/>
- <p className="font-semibold text-white">No courses match your search criteria.</p>
- <p className="text-xs text-ink-400">Try clearing filters or searching for different keywords.</p>
+ <div className="bg-ink-950 border-2 border-ink-800 p-16 text-center text-ink-400 space-y-4">
+ <BookOpen className="w-12 h-12 mx-auto text-ink-600"/>
+ <p className="text-xl font-bold text-white">No courses match your search criteria.</p>
+ <p className="text-sm text-ink-400">Try clearing filters or searching for different keywords.</p>
  </div>
  ) : (
- <FadeIn delay={0.3} direction="up">
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 pt-8">
  {filteredCourses.map((course) => (
  <CourseCard key={course.id} course={course} />
  ))}
  </div>
- </FadeIn>
  )}
  </div>
  );

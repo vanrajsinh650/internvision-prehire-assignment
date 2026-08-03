@@ -152,40 +152,40 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  }
 
  return (
- <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
- <Link href="/courses"className="inline-flex items-center gap-2 text-xs font-semibold text-ink-400 hover:text-white transition">
+ <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
+ <Link href="/courses"className="inline-flex items-center gap-2 text-sm font-bold text-ink-400 hover:text-white transition uppercase tracking-wider">
  <ArrowLeft className="w-4 h-4"/> Back to All Courses
  </Link>
 
- <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+ <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
  {/* MAIN CONTENT */}
- <div className="lg:col-span-2 space-y-8">
- <div className="space-y-4">
- <div className="flex items-center gap-3">
- <span className="px-3 py-1 text-xs font-medium bg-brand-500/10 text-brand-400 border border-brand-500/20">
+ <div className="lg:col-span-8 space-y-12">
+ <div className="space-y-6 border-l-8 border-brand-500 pl-6 sm:pl-8">
+ <div className="flex flex-wrap items-center gap-4">
+ <span className="px-3 py-1 text-sm font-black bg-white text-black uppercase tracking-widest shadow-[2px_2px_0px_#2563eb]">
  {course.level}
  </span>
- <span className="text-ink-400 text-xs flex items-center gap-1 font-medium">
- <Clock className="w-3.5 h-3.5"/>
+ <span className="text-ink-300 text-sm flex items-center gap-1.5 font-bold uppercase tracking-wider">
+ <Clock className="w-4 h-4 text-brand-400"/>
  {course.duration}
  </span>
  </div>
 
- <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+ <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight uppercase leading-[0.9]">
  {course.title}
  </h1>
 
- <p className="text-ink-300 text-base leading-relaxed">
+ <p className="text-ink-300 text-lg leading-relaxed max-w-3xl">
  {course.description}
  </p>
  </div>
 
  {/* TECHNOLOGIES COVERED */}
- <div className="bg-ink-950 border border-ink-800 p-6 space-y-4">
- <h3 className="text-lg font-bold text-white">Technologies You Will Master</h3>
- <div className="flex flex-wrap gap-2">
+ <div className="bg-ink-950 border-2 border-ink-800 p-8 space-y-6 md:-ml-8 shadow-[8px_8px_0px_#1a1915]">
+ <h3 className="text-2xl font-black text-white uppercase tracking-tight">Technologies You Will Master</h3>
+ <div className="flex flex-wrap gap-3">
  {course.technologies.map((tech) => (
- <span key={tech} className="px-3 py-1.5 text-xs font-semibold bg-ink-900 text-brand-300 border border-ink-700">
+ <span key={tech} className="px-4 py-2 text-sm font-bold bg-ink-900 text-brand-300 border-2 border-ink-700">
  {tech}
  </span>
  ))}
@@ -193,23 +193,23 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  </div>
 
  {/* SYLLABUS HIGHLIGHTS */}
- <div className="bg-ink-950 border border-ink-800 p-6 space-y-4">
- <h3 className="text-lg font-bold text-white">Curriculum & Learning Outcomes</h3>
- <ul className="space-y-3 text-sm text-ink-300">
- <li className="flex items-start gap-3">
- <CheckCircle2 className="w-5 h-5 text-brand-400 shrink-0 mt-0.5"/>
+ <div className="bg-ink-950 border-2 border-ink-800 p-8 space-y-6 md:ml-8 shadow-[8px_8px_0px_#1a1915]">
+ <h3 className="text-2xl font-black text-white uppercase tracking-tight">Curriculum & Learning Outcomes</h3>
+ <ul className="space-y-4 text-base text-ink-300 font-medium">
+ <li className="flex items-start gap-4">
+ <CheckCircle2 className="w-6 h-6 text-brand-400 shrink-0 mt-0.5"/>
  <span>Production application architecture using Next.js 15 & FastAPI backend.</span>
  </li>
- <li className="flex items-start gap-3">
- <CheckCircle2 className="w-5 h-5 text-brand-400 shrink-0 mt-0.5"/>
+ <li className="flex items-start gap-4">
+ <CheckCircle2 className="w-6 h-6 text-brand-400 shrink-0 mt-0.5"/>
  <span>REST API design, JWT authentication, and database ORM patterns.</span>
  </li>
- <li className="flex items-start gap-3">
- <CheckCircle2 className="w-5 h-5 text-brand-400 shrink-0 mt-0.5"/>
+ <li className="flex items-start gap-4">
+ <CheckCircle2 className="w-6 h-6 text-brand-400 shrink-0 mt-0.5"/>
  <span>Payment gateway integration (Razorpay Test Mode) and signature verification.</span>
  </li>
- <li className="flex items-start gap-3">
- <CheckCircle2 className="w-5 h-5 text-brand-400 shrink-0 mt-0.5"/>
+ <li className="flex items-start gap-4">
+ <CheckCircle2 className="w-6 h-6 text-brand-400 shrink-0 mt-0.5"/>
  <span>Containerization with Docker & automated cloud deployment on Railway & Vercel.</span>
  </li>
  </ul>
@@ -217,29 +217,29 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  </div>
 
  {/* SIDEBAR ENROLLMENT CARD */}
- <div className="space-y-6">
- <div className="bg-ink-950 border border-ink-800 p-6 space-y-6 sticky top-24">
+ <div className="lg:col-span-4 space-y-6">
+ <div className="bg-ink-950 border-2 border-ink-800 p-8 space-y-8 sticky top-24 shadow-[8px_8px_0px_#1a1915]">
  <div>
- <div className="text-xs text-ink-400 font-medium">Total Registration Fee</div>
- <div className="text-4xl font-extrabold text-white mt-1">{formatINR(course.price_inr)}</div>
- <div className="text-xs text-emerald-400 font-medium mt-1">Includes Verified Certificate & Internship Placement</div>
+ <div className="text-sm font-bold text-ink-400 uppercase tracking-widest">Total Registration Fee</div>
+ <div className="text-5xl font-black text-white mt-2">{formatINR(course.price_inr)}</div>
+ <div className="text-sm font-bold text-emerald-400 mt-2 bg-emerald-500/10 inline-block px-3 py-1 border border-emerald-500/20">Includes Verified Certificate</div>
  </div>
 
  <button
  onClick={() => setShowCheckoutModal(true)}
- className="w-full py-3.5 font-bold bg-brand-600 hover:bg-brand-500 text-white shadow-brand-600/30 flex items-center justify-center gap-2 transition"
+ className="w-full py-4 text-lg font-black bg-brand-600 hover:bg-brand-500 text-white shadow-[4px_4px_0px_#ffffff] hover:translate-y-1 hover:shadow-[0px_0px_0px_#ffffff] flex items-center justify-center gap-3 transition-all"
  >
- <CreditCard className="w-4 h-4"/>
+ <CreditCard className="w-5 h-5"/>
  Enroll & Pay Now
  </button>
 
- <div className="space-y-3 pt-4 border-t border-ink-800 text-xs text-ink-400">
- <div className="flex items-center gap-2">
- <ShieldCheck className="w-4 h-4 text-brand-400"/>
- <span>Razorpay Test Mode 256-bit Encrypted Checkout</span>
+ <div className="space-y-4 pt-6 border-t-2 border-ink-800 text-sm font-bold text-ink-400">
+ <div className="flex items-center gap-3">
+ <ShieldCheck className="w-5 h-5 text-brand-400"/>
+ <span>Razorpay Encrypted Checkout</span>
  </div>
- <div className="flex items-center gap-2">
- <CheckCircle2 className="w-4 h-4 text-emerald-400"/>
+ <div className="flex items-center gap-3">
+ <CheckCircle2 className="w-5 h-5 text-emerald-400"/>
  <span>Instant Enrollment Access</span>
  </div>
  </div>

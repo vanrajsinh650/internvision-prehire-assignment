@@ -10,32 +10,25 @@ export default function HomePage() {
  <section className="relative overflow-hidden min-h-[80vh] grid grid-cols-[minmax(1rem,1fr)_minmax(0,40rem)_minmax(0,1fr)] lg:grid-cols-[minmax(2rem,1fr)_minmax(0,38rem)_minmax(0,1fr)] items-center lg:items-end pb-16">
  <div className="absolute inset-0 bg-ink-950 -z-10"/>
 
- <div className="col-start-2 pt-32 lg:pt-16 lg:pb-16 space-y-8 text-left z-10">
- <FadeIn delay={0.1} direction="up">
- <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs font-semibold uppercase tracking-wider">
+ <div className="col-start-2 pt-32 lg:pt-16 lg:pb-16 space-y-10 text-left z-10">
+ <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-500 text-white text-xs font-semibold uppercase tracking-wider -rotate-1 origin-bottom-left shadow-lg">
  <Rocket className="w-3.5 h-3.5"/>
  Launch Your Tech Career in 2026
  </div>
- </FadeIn>
 
- <FadeIn delay={0.2} direction="up">
- <h1 className="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight max-w-3xl">
+ <h1 className="text-5xl sm:text-7xl font-extrabold text-white tracking-tight leading-[1.05] max-w-3xl">
  Transform Your Passion Into A <br/><span className="text-brand-400">Production Tech Career</span>
  </h1>
- </FadeIn>
 
- <FadeIn delay={0.3} direction="up">
- <p className="text-lg sm:text-xl text-ink-400 max-w-2xl leading-relaxed">
+ <p className="text-lg sm:text-xl text-ink-300 max-w-2xl leading-relaxed border-l-2 border-brand-500 pl-6">
  Gain industry-ready skills with hands-on bootcamps, real client projects, and guaranteed internship opportunities tailored for ambitious software engineering students.
  </p>
- </FadeIn>
 
- <FadeIn delay={0.4} direction="up">
- <div className="flex flex-col sm:flex-row items-start gap-4 pt-4">
+ <div className="flex flex-col sm:flex-row items-start gap-6 pt-4">
  <div className="flex flex-col items-start">
  <Link
  href="/apply"
- className="w-full sm:w-auto px-8 py-3.5 font-semibold bg-brand-600 hover:bg-brand-500 text-white flex items-center justify-center gap-2 transition-all hover:-translate-y-0.5"
+ className="w-full sm:w-auto px-8 py-4 font-bold bg-white text-black hover:bg-ink-100 flex items-center justify-center gap-2 transition-transform hover:-translate-y-1"
  >
  Apply For Internship
  <ArrowRight className="w-4 h-4"/>
@@ -48,13 +41,12 @@ export default function HomePage() {
  <div className="flex flex-col items-start">
  <Link
  href="/courses"
- className="w-full sm:w-auto px-8 py-3.5 font-semibold bg-transparent hover:bg-ink-800/50 text-ink-300 border border-ink-700/50 flex items-center justify-center transition-all"
+ className="w-full sm:w-auto px-8 py-4 font-bold bg-transparent hover:bg-ink-900 text-white border border-ink-700 flex items-center justify-center transition-all"
  >
  Explore Courses
  </Link>
  </div>
  </div>
- </FadeIn>
  </div>
 
  {/* Asymmetric art element bleeding right */}
@@ -74,173 +66,166 @@ export default function HomePage() {
  </section>
 
  {/* STATS STRIP (TRUST BANNER) */}
- <FadeIn delay={0.2} direction="up">
- <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 pb-8 mt-16 max-w-5xl mx-auto bg-ink-950 border border-ink-800">
- <div className="space-y-1 group">
- <div className="text-3xl sm:text-4xl font-extrabold text-white group-hover:text-brand-400 transition-colors">5,000+</div>
- <div className="text-xs sm:text-sm font-medium text-ink-400">Students Trained</div>
+ <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 pb-12 mt-16 max-w-5xl mx-auto border-t border-b border-ink-800">
+ <div className="space-y-2 group md:translate-y-4">
+ <div className="text-4xl sm:text-5xl font-black text-white group-hover:text-brand-400 transition-colors tracking-tighter">5k+</div>
+ <div className="text-sm font-bold text-ink-400 uppercase tracking-wide">Students Trained</div>
  </div>
- <div className="space-y-1 border-l border-ink-800/50 pl-4 sm:pl-0 sm:border-l-0 group">
- <div className="text-3xl sm:text-4xl font-extrabold text-white group-hover:text-brand-400 transition-colors">94%</div>
- <div className="text-xs sm:text-sm font-medium text-ink-400">Placement Rate</div>
+ <div className="space-y-2 group">
+ <div className="text-4xl sm:text-5xl font-black text-white group-hover:text-brand-400 transition-colors tracking-tighter">94%</div>
+ <div className="text-sm font-bold text-ink-400 uppercase tracking-wide">Placement Rate</div>
  </div>
- <div className="space-y-1 pt-4 border-t border-ink-800/50 sm:pt-0 sm:border-t-0 md:border-l md:border-ink-800/50 md:pl-4 group">
- <div className="text-3xl sm:text-4xl font-extrabold text-white group-hover:text-brand-400 transition-colors">4.9/5</div>
- <div className="text-xs sm:text-sm font-medium text-ink-400">Student Satisfaction</div>
+ <div className="space-y-2 group md:-translate-y-2">
+ <div className="text-4xl sm:text-5xl font-black text-white group-hover:text-brand-400 transition-colors tracking-tighter">4.9</div>
+ <div className="text-sm font-bold text-ink-400 uppercase tracking-wide">Satisfaction Score</div>
  </div>
- <div className="space-y-1 pt-4 border-t border-ink-800/50 border-l border-ink-800/50 pl-4 sm:pt-0 sm:border-t-0 md:border-l md:border-ink-800/50 md:pl-4 group">
- <div className="text-3xl sm:text-4xl font-extrabold text-white group-hover:text-brand-400 transition-colors">100+</div>
- <div className="text-xs sm:text-sm font-medium text-ink-400">Hiring Partners</div>
+ <div className="space-y-2 group md:translate-y-2">
+ <div className="text-4xl sm:text-5xl font-black text-white group-hover:text-brand-400 transition-colors tracking-tighter">100+</div>
+ <div className="text-sm font-bold text-ink-400 uppercase tracking-wide">Hiring Partners</div>
  </div>
  </div>
- </FadeIn>
 
 
  {/* WHY CHOOSE US */}
  <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
- <FadeIn delay={0.1} direction="up">
- <div className="text-center space-y-4 mb-16">
- <h2 className="text-3xl font-bold text-white">Why Choose InternVision Tech?</h2>
- <p className="text-ink-400 max-w-xl mx-auto text-sm">
- We bridge the gap between academic theory and real-world engineering standards.
+ <div className="text-left space-y-4 mb-20 max-w-2xl border-l-4 border-white pl-6">
+ <h2 className="text-4xl font-black text-white uppercase tracking-tight">Why Choose InternVision Tech?</h2>
+ <p className="text-ink-400 text-lg">
+ We bridge the gap between academic theory and real-world engineering standards. No fluff, just production code.
  </p>
  </div>
- </FadeIn>
 
- <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
- <FadeIn delay={0.2} direction="up"className="h-full">
- <div className="bg-ink-950 border border-ink-800 p-8 space-y-4 h-full">
- <div className="w-12 h-12 bg-brand-600/20 text-brand-400 flex items-center justify-center">
- <Code2 className="w-6 h-6"/>
+ <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+ <div className="md:col-span-5 bg-ink-950 border-2 border-ink-800 p-10 space-y-6 md:translate-y-12">
+ <div className="w-14 h-14 bg-brand-500 text-white flex items-center justify-center shadow-[4px_4px_0px_#ffffff]">
+ <Code2 className="w-7 h-7"/>
  </div>
- <h3 className="text-xl font-bold text-white">Production-Grade Stack</h3>
- <p className="text-ink-400 text-sm leading-relaxed">
+ <h3 className="text-2xl font-black text-white uppercase">Production-Grade Stack</h3>
+ <p className="text-ink-400 text-base leading-relaxed">
  Learn Next.js 15, FastAPI, Docker, and PostgreSQL with real GitHub workflows and deployment pipelines.
  </p>
  </div>
- </FadeIn>
 
- <FadeIn delay={0.3} direction="up"className="h-full">
- <div className="bg-ink-950 border border-ink-800 p-8 space-y-4 h-full">
- <div className="w-12 h-12 bg-purple-600/20 text-purple-400 flex items-center justify-center">
- <Cpu className="w-6 h-6"/>
+ <div className="md:col-span-7 space-y-8">
+ <div className="bg-ink-950 border border-ink-800 p-8 flex gap-6 items-start hover:border-brand-500 transition-colors">
+ <div className="w-12 h-12 shrink-0 bg-ink-900 border border-ink-700 text-white flex items-center justify-center">
+ <Cpu className="w-5 h-5"/>
  </div>
- <h3 className="text-xl font-bold text-white">1:1 Mentorship</h3>
+ <div>
+ <h3 className="text-xl font-bold text-white mb-2">1:1 Mentorship</h3>
  <p className="text-ink-400 text-sm leading-relaxed">
- Get direct code reviews, resume polishing, and mock technical interview sessions from senior engineers.
+ Get direct code reviews, resume polishing, and mock technical interview sessions from senior engineers who actively work in the industry.
  </p>
  </div>
- </FadeIn>
-
- <FadeIn delay={0.4} direction="up"className="h-full">
- <div className="bg-ink-950 border border-ink-800 p-8 space-y-4 h-full">
- <div className="w-12 h-12 bg-emerald-600/20 text-emerald-400 flex items-center justify-center">
- <Trophy className="w-6 h-6"/>
  </div>
- <h3 className="text-xl font-bold text-white">Guaranteed Internship</h3>
+
+ <div className="bg-ink-950 border border-ink-800 p-8 flex gap-6 items-start hover:border-brand-500 transition-colors md:ml-12">
+ <div className="w-12 h-12 shrink-0 bg-ink-900 border border-ink-700 text-white flex items-center justify-center">
+ <Trophy className="w-5 h-5"/>
+ </div>
+ <div>
+ <h3 className="text-xl font-bold text-white mb-2">Guaranteed Internship</h3>
  <p className="text-ink-400 text-sm leading-relaxed">
  Choose from 1, 3, or 6-month hands-on internships with real client projects and verified certificates.
  </p>
  </div>
- </FadeIn>
+ </div>
+ </div>
  </div>
  </section>
 
  {/* FEATURED COURSES PREVIEW */}
  <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
- <FadeIn delay={0.1} direction="up">
- <div className="flex justify-between items-end mb-12">
- <div>
- <h2 className="text-3xl font-bold text-white">Featured Bootcamps</h2>
- <p className="text-ink-400 text-sm mt-1">Accelerate your skills with our top-rated programs.</p>
+ <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-16 gap-6">
+ <div className="max-w-xl">
+ <h2 className="text-4xl font-black text-white uppercase tracking-tight">Featured Bootcamps</h2>
+ <p className="text-ink-400 text-lg mt-4">Accelerate your skills with our top-rated, outcome-driven programs designed for the modern web.</p>
  </div>
- <Link href="/courses"className="text-sm font-semibold text-brand-400 hover:text-brand-300 flex items-center gap-1">
+ <Link href="/courses"className="text-sm font-bold text-brand-400 hover:text-brand-300 flex items-center gap-2 border-b-2 border-brand-400 pb-1">
  View All Courses <ArrowRight className="w-4 h-4"/>
  </Link>
  </div>
- </FadeIn>
 
- <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
- <FadeIn delay={0.2} direction="up"className="h-full">
- <div className="bg-ink-950 border border-ink-800 p-8 flex flex-col justify-between space-y-6 h-full">
- <div className="space-y-4">
- <div className="flex items-center justify-between">
- <span className="px-3 py-1 text-xs font-medium bg-brand-500/10 text-brand-400 border border-brand-500/20">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+ <div className="bg-ink-950 border border-ink-800 p-10 flex flex-col justify-between space-y-8 h-full hover:border-ink-600 transition-colors relative">
+ <div className="absolute top-0 right-0 p-4">
+ <div className="w-2 h-2 bg-brand-500 rounded-full"/>
+ </div>
+ <div className="space-y-6">
+ <div className="flex items-center gap-4">
+ <span className="px-3 py-1 text-xs font-bold bg-white text-black uppercase tracking-wider">
  Intermediate
  </span>
- <span className="text-xs text-ink-400 font-medium">8 Weeks</span>
+ <span className="text-xs text-ink-400 font-bold uppercase tracking-widest">8 Weeks</span>
  </div>
- <h3 className="text-2xl font-bold text-white">Full Stack Web Development Bootcamp</h3>
- <p className="text-ink-400 text-sm leading-relaxed">
+ <h3 className="text-3xl font-black text-white leading-tight">Full Stack Web Development Bootcamp</h3>
+ <p className="text-ink-400 text-base leading-relaxed">
  Master Next.js 15, React 19, FastAPI, PostgreSQL, and modern Tailwind CSS. Build scalable web applications.
  </p>
  <div className="flex flex-wrap gap-2 pt-2">
  {["Next.js","React","FastAPI","PostgreSQL"].map((tech) => (
- <span key={tech} className="px-2.5 py-1 text-xs bg-ink-800 text-ink-300 border border-ink-700">
+ <span key={tech} className="px-3 py-1.5 text-xs font-medium bg-ink-900 text-ink-300 border border-ink-800">
  {tech}
  </span>
  ))}
  </div>
  </div>
- <div className="flex items-center justify-between pt-4 border-t border-ink-800">
- <div className="text-2xl font-extrabold text-white">₹4,999</div>
- <Link href="/courses/full-stack-web-development"className="px-5 py-2.5 text-sm font-semibold bg-brand-600 hover:bg-brand-500 text-white transition">
+ <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-6 border-t border-ink-800">
+ <div className="text-3xl font-black text-white">₹4,999</div>
+ <Link href="/courses/full-stack-web-development"className="px-6 py-3 text-sm font-bold bg-brand-600 hover:bg-brand-500 text-white transition text-center">
  Enroll Now
  </Link>
  </div>
  </div>
- </FadeIn>
 
- <FadeIn delay={0.3} direction="up"className="h-full">
- <div className="bg-ink-950 border border-ink-800 p-8 flex flex-col justify-between space-y-6 h-full">
- <div className="space-y-4">
- <div className="flex items-center justify-between">
- <span className="px-3 py-1 text-xs font-medium bg-purple-500/10 text-purple-400 border border-purple-500/20">
+ <div className="bg-ink-950 border border-ink-800 p-10 flex flex-col justify-between space-y-8 h-full hover:border-ink-600 transition-colors md:mt-12 relative">
+ <div className="space-y-6">
+ <div className="flex items-center gap-4">
+ <span className="px-3 py-1 text-xs font-bold bg-ink-800 text-white uppercase tracking-wider">
  Advanced
  </span>
- <span className="text-xs text-ink-400 font-medium">12 Weeks</span>
+ <span className="text-xs text-ink-400 font-bold uppercase tracking-widest">12 Weeks</span>
  </div>
- <h3 className="text-2xl font-bold text-white">AI & Machine Learning Engineering</h3>
- <p className="text-ink-400 text-sm leading-relaxed">
+ <h3 className="text-3xl font-black text-white leading-tight">AI & Machine Learning Engineering</h3>
+ <p className="text-ink-400 text-base leading-relaxed">
  Build cutting-edge AI models, fine-tune LLMs, integrate PyTorch and Vector DBs into production systems.
  </p>
  <div className="flex flex-wrap gap-2 pt-2">
  {["Python","PyTorch","OpenAI API","LangChain"].map((tech) => (
- <span key={tech} className="px-2.5 py-1 text-xs bg-ink-800 text-ink-300 border border-ink-700">
+ <span key={tech} className="px-3 py-1.5 text-xs font-medium bg-ink-900 text-ink-300 border border-ink-800">
  {tech}
  </span>
  ))}
  </div>
  </div>
- <div className="flex items-center justify-between pt-4 border-t border-ink-800">
- <div className="text-2xl font-extrabold text-white">₹6,999</div>
- <Link href="/courses/ai-machine-learning-engineering"className="px-5 py-2.5 text-sm font-semibold bg-brand-600 hover:bg-brand-500 text-white transition">
+ <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-6 border-t border-ink-800">
+ <div className="text-3xl font-black text-white">₹6,999</div>
+ <Link href="/courses/ai-machine-learning-engineering"className="px-6 py-3 text-sm font-bold bg-brand-600 hover:bg-brand-500 text-white transition text-center">
  Enroll Now
  </Link>
  </div>
  </div>
- </FadeIn>
  </div>
  </section>
 
  {/* CTA SECTION */}
- <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
- <FadeIn delay={0.2} direction="up">
- <div className="bg-ink-950 border border-ink-800 p-12 text-center space-y-6 relative overflow-hidden">
- <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Ready to Step Into Tech?</h2>
- <p className="text-ink-300 max-w-xl mx-auto text-sm leading-relaxed">
+ <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+ <div className="bg-brand-600 p-12 md:p-20 text-left space-y-8 relative overflow-hidden shadow-[8px_8px_0px_#ffffff]">
+ <div className="max-w-3xl relative z-10 space-y-6">
+ <h2 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tight leading-none">Ready to Step Into Tech?</h2>
+ <p className="text-brand-100 text-lg md:text-xl leading-relaxed">
  Apply today for our upcoming batch. Flexible 1, 3, or 6-month internship durations tailored to your academic schedule.
  </p>
- <div className="pt-2">
+ <div className="pt-4">
  <Link
  href="/apply"
- className="inline-flex items-center gap-2 px-8 py-3.5 text-base font-semibold bg-brand-600 hover:bg-brand-500 text-white shadow-brand-600/30 transition"
+ className="inline-flex items-center gap-3 px-8 py-4 text-lg font-bold bg-white text-black hover:bg-ink-100 transition-transform hover:-translate-y-1 shadow-lg"
  >
- Start Internship Application <ArrowRight className="w-5 h-5"/>
+ Start Application <ArrowRight className="w-5 h-5"/>
  </Link>
  </div>
  </div>
- </FadeIn>
+ </div>
  </section>
  </div>
  );
