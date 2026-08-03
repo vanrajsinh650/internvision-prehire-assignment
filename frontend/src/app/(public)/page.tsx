@@ -8,11 +8,11 @@ export default function HomePage() {
  <div className="space-y-24 pb-20">
  {/* HERO SECTION */}
  <section className="relative overflow-hidden min-h-[80vh] grid grid-cols-[minmax(1rem,1fr)_minmax(0,40rem)_minmax(0,1fr)] lg:grid-cols-[minmax(2rem,1fr)_minmax(0,38rem)_minmax(0,1fr)] items-center lg:items-end pb-16">
- <div className="absolute inset-0 bg-ink-900 from-ember-600/10 to-transparent blur-3xl -z-10"/>
+ <div className="absolute inset-0 bg-ink-900 from-brand-600/10 to-transparent blur-3xl -z-10"/>
 
  <div className="col-start-2 pt-32 lg:pt-16 lg:pb-16 space-y-8 text-left z-10">
  <FadeIn delay={0.1} direction="up">
- <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-ember-500/10 border border-ember-500/20 text-ember-400 text-xs font-semibold uppercase tracking-wider">
+ <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs font-semibold uppercase tracking-wider">
  <Rocket className="w-3.5 h-3.5"/>
  Launch Your Tech Career in 2026
  </div>
@@ -35,7 +35,7 @@ export default function HomePage() {
  <div className="flex flex-col items-start">
  <Link
  href="/apply"
- className="w-full sm:w-auto px-8 py-3.5 font-semibold bg-ember-600 hover:bg-ember-500 text-white flex items-center justify-center gap-2 transition-all hover:-translate-y-0.5"
+ className="w-full sm:w-auto px-8 py-3.5 font-semibold bg-brand-600 hover:bg-brand-500 text-white flex items-center justify-center gap-2 transition-all hover:-translate-y-0.5"
  >
  Apply For Internship
  <ArrowRight className="w-4 h-4"/>
@@ -66,7 +66,7 @@ export default function HomePage() {
  <div className="w-48 h-32 bg-ink-800 border border-ink-700"/>
  </Float>
  <Float delay={0.5} yOffset={15}>
- <div className="w-64 h-32 bg-ember-600/10 border border-ember-500/30 ml-8"/>
+ <div className="w-64 h-32 bg-brand-600/10 border border-brand-500/30 ml-8"/>
  </Float>
  </div>
  </div>
@@ -109,8 +109,8 @@ export default function HomePage() {
 
  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
  <FadeIn delay={0.2} direction="up"className="h-full">
- <div className="glass-card p-8 space-y-4 hover:border-ember-500/40 transition h-full">
- <div className="w-12 h-12 bg-ember-600/20 text-ember-400 flex items-center justify-center">
+ <div className="glass-card p-8 space-y-4 hover:border-brand-500/40 transition h-full">
+ <div className="w-12 h-12 bg-brand-600/20 text-brand-400 flex items-center justify-center">
  <Code2 className="w-6 h-6"/>
  </div>
  <h3 className="text-xl font-bold text-white">Production-Grade Stack</h3>
@@ -152,7 +152,7 @@ export default function HomePage() {
  <h2 className="text-3xl font-bold text-white">Featured Bootcamps</h2>
  <p className="text-ink-400 text-sm mt-1">Accelerate your skills with our top-rated programs.</p>
  </div>
- <Link href="/courses"className="text-sm font-semibold text-ember-400 hover:text-ember-300 flex items-center gap-1">
+ <Link href="/courses"className="text-sm font-semibold text-brand-400 hover:text-brand-300 flex items-center gap-1">
  View All Courses <ArrowRight className="w-4 h-4"/>
  </Link>
  </div>
@@ -163,7 +163,7 @@ export default function HomePage() {
  <div className="glass-card p-8 flex flex-col justify-between space-y-6 h-full">
  <div className="space-y-4">
  <div className="flex items-center justify-between">
- <span className="px-3 py-1 text-xs font-medium bg-ember-500/10 text-ember-400 border border-ember-500/20">
+ <span className="px-3 py-1 text-xs font-medium bg-brand-500/10 text-brand-400 border border-brand-500/20">
  Intermediate
  </span>
  <span className="text-xs text-ink-400 font-medium">8 Weeks</span>
@@ -182,7 +182,7 @@ export default function HomePage() {
  </div>
  <div className="flex items-center justify-between pt-4 border-t border-ink-800">
  <div className="text-2xl font-extrabold text-white">₹4,999</div>
- <Link href="/courses/full-stack-web-development"className="px-5 py-2.5 text-sm font-semibold bg-ember-600 hover:bg-ember-500 text-white transition">
+ <Link href="/courses/full-stack-web-development"className="px-5 py-2.5 text-sm font-semibold bg-brand-600 hover:bg-brand-500 text-white transition">
  Enroll Now
  </Link>
  </div>
@@ -212,7 +212,7 @@ export default function HomePage() {
  </div>
  <div className="flex items-center justify-between pt-4 border-t border-ink-800">
  <div className="text-2xl font-extrabold text-white">₹6,999</div>
- <Link href="/courses/ai-machine-learning-engineering"className="px-5 py-2.5 text-sm font-semibold bg-ember-600 hover:bg-ember-500 text-white transition">
+ <Link href="/courses/ai-machine-learning-engineering"className="px-5 py-2.5 text-sm font-semibold bg-brand-600 hover:bg-brand-500 text-white transition">
  Enroll Now
  </Link>
  </div>
@@ -225,7 +225,7 @@ export default function HomePage() {
  <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
  <FadeIn delay={0.2} direction="up">
  <div className="glass-card p-12 text-center space-y-6 relative overflow-hidden">
- <div className="absolute -right-12 -top-12 w-64 h-64 bg-ember-600/20 blur-3xl pointer-events-none"/>
+ <div className="absolute -right-12 -top-12 w-64 h-64 bg-brand-600/20 blur-3xl pointer-events-none"/>
  <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Ready to Step Into Tech?</h2>
  <p className="text-ink-300 max-w-xl mx-auto text-sm leading-relaxed">
  Apply today for our upcoming batch. Flexible 1, 3, or 6-month internship durations tailored to your academic schedule.
@@ -233,7 +233,7 @@ export default function HomePage() {
  <div className="pt-2">
  <Link
  href="/apply"
- className="inline-flex items-center gap-2 px-8 py-3.5 text-base font-semibold bg-ember-600 hover:bg-ember-500 text-white shadow-ember-600/30 transition"
+ className="inline-flex items-center gap-2 px-8 py-3.5 text-base font-semibold bg-brand-600 hover:bg-brand-500 text-white shadow-brand-600/30 transition"
  >
  Start Internship Application <ArrowRight className="w-5 h-5"/>
  </Link>

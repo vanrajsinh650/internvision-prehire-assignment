@@ -66,7 +66,7 @@ function SuccessContent() {
  </div>
  <div className="flex justify-between text-ink-400">
  <span>Internship Track Duration:</span>
- <span className="text-ember-400 font-semibold">{duration}</span>
+ <span className="text-brand-400 font-semibold">{duration}</span>
  </div>
  </>
  )}
@@ -75,7 +75,7 @@ function SuccessContent() {
  <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
  <Link
  href="/courses"
- className="w-full sm:w-auto px-6 py-3 font-semibold bg-ember-600 hover:bg-ember-500 text-white flex items-center justify-center gap-2 transition"
+ className="w-full sm:w-auto px-6 py-3 font-semibold bg-brand-600 hover:bg-brand-500 text-white flex items-center justify-center gap-2 transition"
  >
  Explore More Courses <ArrowRight className="w-4 h-4"/>
  </Link>

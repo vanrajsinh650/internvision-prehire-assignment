@@ -129,7 +129,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  if (loading) {
  return (
  <div className="flex justify-center items-center py-32">
- <Loader2 className="w-8 h-8 text-ember-500 animate-spin"/>
+ <Loader2 className="w-8 h-8 text-brand-500 animate-spin"/>
  </div>
  );
  }
@@ -139,7 +139,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  <div className="max-w-4xl mx-auto px-4 py-20 text-center space-y-4">
  <h2 className="text-2xl font-bold text-white">Course Not Found</h2>
  <p className="text-ink-400 text-sm">The course you are looking for does not exist or has been removed.</p>
- <Link href="/courses"className="inline-flex items-center gap-2 text-ember-400 font-semibold text-sm">
+ <Link href="/courses"className="inline-flex items-center gap-2 text-brand-400 font-semibold text-sm">
  <ArrowLeft className="w-4 h-4"/> Back to Course Catalog
  </Link>
  </div>
@@ -157,7 +157,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  <div className="lg:col-span-2 space-y-8">
  <div className="space-y-4">
  <div className="flex items-center gap-3">
- <span className="px-3 py-1 text-xs font-medium bg-ember-500/10 text-ember-400 border border-ember-500/20">
+ <span className="px-3 py-1 text-xs font-medium bg-brand-500/10 text-brand-400 border border-brand-500/20">
  {course.level}
  </span>
  <span className="text-ink-400 text-xs flex items-center gap-1 font-medium">
@@ -180,7 +180,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  <h3 className="text-lg font-bold text-white">Technologies You Will Master</h3>
  <div className="flex flex-wrap gap-2">
  {course.technologies.map((tech) => (
- <span key={tech} className="px-3 py-1.5 text-xs font-semibold bg-ink-900 text-ember-300 border border-ink-700">
+ <span key={tech} className="px-3 py-1.5 text-xs font-semibold bg-ink-900 text-brand-300 border border-ink-700">
  {tech}
  </span>
  ))}
@@ -192,19 +192,19 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  <h3 className="text-lg font-bold text-white">Curriculum & Learning Outcomes</h3>
  <ul className="space-y-3 text-sm text-ink-300">
  <li className="flex items-start gap-3">
- <CheckCircle2 className="w-5 h-5 text-ember-400 shrink-0 mt-0.5"/>
+ <CheckCircle2 className="w-5 h-5 text-brand-400 shrink-0 mt-0.5"/>
  <span>Production application architecture using Next.js 15 & FastAPI backend.</span>
  </li>
  <li className="flex items-start gap-3">
- <CheckCircle2 className="w-5 h-5 text-ember-400 shrink-0 mt-0.5"/>
+ <CheckCircle2 className="w-5 h-5 text-brand-400 shrink-0 mt-0.5"/>
  <span>REST API design, JWT authentication, and database ORM patterns.</span>
  </li>
  <li className="flex items-start gap-3">
- <CheckCircle2 className="w-5 h-5 text-ember-400 shrink-0 mt-0.5"/>
+ <CheckCircle2 className="w-5 h-5 text-brand-400 shrink-0 mt-0.5"/>
  <span>Payment gateway integration (Razorpay Test Mode) and signature verification.</span>
  </li>
  <li className="flex items-start gap-3">
- <CheckCircle2 className="w-5 h-5 text-ember-400 shrink-0 mt-0.5"/>
+ <CheckCircle2 className="w-5 h-5 text-brand-400 shrink-0 mt-0.5"/>
  <span>Containerization with Docker & automated cloud deployment on Railway & Vercel.</span>
  </li>
  </ul>
@@ -213,7 +213,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
 
  {/* SIDEBAR ENROLLMENT CARD */}
  <div className="space-y-6">
- <div className="glass-card p-6 space-y-6 sticky top-24 border border-ember-500/30">
+ <div className="glass-card p-6 space-y-6 sticky top-24 border border-brand-500/30">
  <div>
  <div className="text-xs text-ink-400 font-medium">Total Registration Fee</div>
  <div className="text-4xl font-extrabold text-white mt-1">{formatINR(course.price_inr)}</div>
@@ -222,7 +222,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
 
  <button
  onClick={() => setShowCheckoutModal(true)}
- className="w-full py-3.5 font-bold bg-ember-600 hover:bg-ember-500 text-white shadow-ember-600/30 flex items-center justify-center gap-2 transition"
+ className="w-full py-3.5 font-bold bg-brand-600 hover:bg-brand-500 text-white shadow-brand-600/30 flex items-center justify-center gap-2 transition"
  >
  <CreditCard className="w-4 h-4"/>
  Enroll & Pay Now
@@ -230,7 +230,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
 
  <div className="space-y-3 pt-4 border-t border-ink-800 text-xs text-ink-400">
  <div className="flex items-center gap-2">
- <ShieldCheck className="w-4 h-4 text-ember-400"/>
+ <ShieldCheck className="w-4 h-4 text-brand-400"/>
  <span>Razorpay Test Mode 256-bit Encrypted Checkout</span>
  </div>
  <div className="flex items-center gap-2">
@@ -273,7 +273,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  <form onSubmit={handleCreateOrder} className="space-y-4 text-sm">
  <div className="space-y-1.5">
  <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
- <User className="w-3.5 h-3.5 text-ember-400"/> Full Name *
+ <User className="w-3.5 h-3.5 text-brand-400"/> Full Name *
  </label>
  <input
  type="text"
@@ -281,13 +281,13 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  placeholder="John Doe"
  value={studentForm.student_name}
  onChange={(e) => setStudentForm({ ...studentForm, student_name: e.target.value })}
- className="w-full bg-ink-900 border border-ink-700 px-3.5 py-2.5 text-white focus:outline-none focus:border-ember-500"
+ className="w-full bg-ink-900 border border-ink-700 px-3.5 py-2.5 text-white focus:outline-none focus:border-brand-500"
  />
  </div>
 
  <div className="space-y-1.5">
  <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
- <Mail className="w-3.5 h-3.5 text-ember-400"/> Email Address *
+ <Mail className="w-3.5 h-3.5 text-brand-400"/> Email Address *
  </label>
  <input
  type="email"
@@ -295,13 +295,13 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  placeholder="john@example.com"
  value={studentForm.student_email}
  onChange={(e) => setStudentForm({ ...studentForm, student_email: e.target.value })}
- className="w-full bg-ink-900 border border-ink-700 px-3.5 py-2.5 text-white focus:outline-none focus:border-ember-500"
+ className="w-full bg-ink-900 border border-ink-700 px-3.5 py-2.5 text-white focus:outline-none focus:border-brand-500"
  />
  </div>
 
  <div className="space-y-1.5">
  <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
- <Phone className="w-3.5 h-3.5 text-ember-400"/> Phone Number *
+ <Phone className="w-3.5 h-3.5 text-brand-400"/> Phone Number *
  </label>
  <input
  type="tel"
@@ -309,7 +309,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  placeholder="+91 9876543210"
  value={studentForm.student_phone}
  onChange={(e) => setStudentForm({ ...studentForm, student_phone: e.target.value })}
- className="w-full bg-ink-900 border border-ink-700 px-3.5 py-2.5 text-white focus:outline-none focus:border-ember-500"
+ className="w-full bg-ink-900 border border-ink-700 px-3.5 py-2.5 text-white focus:outline-none focus:border-brand-500"
  />
  </div>
 
@@ -322,7 +322,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
  <button
  type="submit"
  disabled={submitting}
- className="px-6 py-2.5 font-bold bg-ember-600 hover:bg-ember-500 text-white shadow-ember-600/30 flex items-center gap-2 transition disabled:opacity-50"
+ className="px-6 py-2.5 font-bold bg-brand-600 hover:bg-brand-500 text-white shadow-brand-600/30 flex items-center gap-2 transition disabled:opacity-50"
  >
  {submitting ? (
  <>

@@ -59,7 +59,7 @@ export default function InternshipApplyPage() {
  {/* HEADER */}
  <FadeIn delay={0.1} direction="up">
  <div className="text-center space-y-4 max-w-2xl mx-auto">
- <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-ember-500/10 border border-ember-500/20 text-ember-400 text-xs font-semibold uppercase tracking-wider">
+ <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs font-semibold uppercase tracking-wider">
  <GraduationCap className="w-4 h-4"/>
  Pre-Hire Internship Program 2026
  </div>
@@ -84,14 +84,14 @@ export default function InternshipApplyPage() {
  <form onSubmit={handleSubmit} className="space-y-6">
  {/* PERSONAL INFO */}
  <div className="space-y-4">
- <h3 className="text-sm font-bold uppercase tracking-wider text-ember-400 border-b border-ink-800 pb-2">
+ <h3 className="text-sm font-bold uppercase tracking-wider text-brand-400 border-b border-ink-800 pb-2">
  1. Personal & Contact Information
  </h3>
 
  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
  <div className="space-y-1.5">
  <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
- <User className="w-3.5 h-3.5 text-ember-400"/> Full Name *
+ <User className="w-3.5 h-3.5 text-brand-400"/> Full Name *
  </label>
  <input
  type="text"
@@ -99,13 +99,13 @@ export default function InternshipApplyPage() {
  placeholder="Aarav Sharma"
  value={formData.full_name}
  onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
- className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-ember-500 focus:ring-1 focus:ring-ember-500 transition"
+ className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition"
  />
  </div>
 
  <div className="space-y-1.5">
  <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
- <Mail className="w-3.5 h-3.5 text-ember-400"/> Email Address *
+ <Mail className="w-3.5 h-3.5 text-brand-400"/> Email Address *
  </label>
  <input
  type="email"
@@ -113,13 +113,13 @@ export default function InternshipApplyPage() {
  placeholder="aarav@example.com"
  value={formData.email}
  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
- className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-ember-500 focus:ring-1 focus:ring-ember-500 transition"
+ className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition"
  />
  </div>
 
  <div className="space-y-1.5 md:col-span-2">
  <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
- <Phone className="w-3.5 h-3.5 text-ember-400"/> Phone Number *
+ <Phone className="w-3.5 h-3.5 text-brand-400"/> Phone Number *
  </label>
  <input
  type="tel"
@@ -127,7 +127,7 @@ export default function InternshipApplyPage() {
  placeholder="+91 9876543210"
  value={formData.phone}
  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
- className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-ember-500 focus:ring-1 focus:ring-ember-500 transition"
+ className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition"
  />
  </div>
  </div>
@@ -135,14 +135,14 @@ export default function InternshipApplyPage() {
 
  {/* ACADEMIC DETAILS */}
  <div className="space-y-4 pt-6 mt-6 border-t border-ink-800/50">
- <h3 className="text-sm font-bold uppercase tracking-wider text-ember-400 border-b border-ink-800 pb-2">
+ <h3 className="text-sm font-bold uppercase tracking-wider text-brand-400 border-b border-ink-800 pb-2">
  2. Academic Profile
  </h3>
 
  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
  <div className="space-y-1.5 md:col-span-2">
  <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
- <Building2 className="w-3.5 h-3.5 text-ember-400"/> College / University Name *
+ <Building2 className="w-3.5 h-3.5 text-brand-400"/> College / University Name *
  </label>
  <input
  type="text"
@@ -150,13 +150,13 @@ export default function InternshipApplyPage() {
  placeholder="Indian Institute of Technology, Bombay"
  value={formData.college}
  onChange={(e) => setFormData({ ...formData, college: e.target.value })}
- className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-ember-500 focus:ring-1 focus:ring-ember-500 transition"
+ className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition"
  />
  </div>
 
  <div className="space-y-1.5">
  <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
- <BookOpen className="w-3.5 h-3.5 text-ember-400"/> Degree & Major *
+ <BookOpen className="w-3.5 h-3.5 text-brand-400"/> Degree & Major *
  </label>
  <input
  type="text"
@@ -164,18 +164,18 @@ export default function InternshipApplyPage() {
  placeholder="B.Tech CSE"
  value={formData.degree}
  onChange={(e) => setFormData({ ...formData, degree: e.target.value })}
- className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-ember-500 focus:ring-1 focus:ring-ember-500 transition"
+ className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition"
  />
  </div>
 
  <div className="space-y-1.5 md:col-span-3">
  <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
- <Calendar className="w-3.5 h-3.5 text-ember-400"/> Year of Study *
+ <Calendar className="w-3.5 h-3.5 text-brand-400"/> Year of Study *
  </label>
  <select
  value={formData.year_of_study}
  onChange={(e) => setFormData({ ...formData, year_of_study: e.target.value })}
- className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-ember-500 focus:ring-1 focus:ring-ember-500 transition"
+ className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition"
  >
  <option value="1st Year">1st Year</option>
  <option value="2nd Year">2nd Year</option>
@@ -189,14 +189,14 @@ export default function InternshipApplyPage() {
 
  {/* SKILLS & DURATION */}
  <div className="space-y-4 pt-6 mt-6 border-t border-ink-800/50">
- <h3 className="text-sm font-bold uppercase tracking-wider text-ember-400 border-b border-ink-800 pb-2">
+ <h3 className="text-sm font-bold uppercase tracking-wider text-brand-400 border-b border-ink-800 pb-2">
  3. Program Preferences & Technical Skills
  </h3>
 
  <div className="space-y-4">
  <div className="space-y-1.5">
  <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
- <Code className="w-3.5 h-3.5 text-ember-400"/> Technical Skills (Comma-separated) *
+ <Code className="w-3.5 h-3.5 text-brand-400"/> Technical Skills (Comma-separated) *
  </label>
  <input
  type="text"
@@ -204,14 +204,14 @@ export default function InternshipApplyPage() {
  placeholder="React, Next.js, Python, FastAPI, Docker, PostgreSQL"
  value={formData.skills}
  onChange={(e) => setFormData({ ...formData, skills: e.target.value })}
- className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-ember-500 focus:ring-1 focus:ring-ember-500 transition"
+ className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition"
  />
  </div>
 
  {/* DURATION RADIO CARDS */}
  <div className="space-y-2">
  <label className="text-xs text-ink-300 font-medium flex items-center gap-1.5">
- <Clock className="w-3.5 h-3.5 text-ember-400"/> Preferred Internship Duration *
+ <Clock className="w-3.5 h-3.5 text-brand-400"/> Preferred Internship Duration *
  </label>
  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-1">
  {["1 Month","3 Months","6 Months"].map((dur) => (
@@ -220,7 +220,7 @@ export default function InternshipApplyPage() {
  onClick={() => setFormData({ ...formData, duration: dur })}
  className={`cursor-pointer p-4 border text-center transition ${
  formData.duration === dur
- ?"bg-ember-600/20 border-ember-500 text-white"
+ ?"bg-brand-600/20 border-brand-500 text-white"
  :"bg-ink-900/60 border-ink-800 text-ink-400 hover:border-ink-700"
  }`}
  >
@@ -241,7 +241,7 @@ export default function InternshipApplyPage() {
  <button
  type="submit"
  disabled={submitting}
- className="w-full py-4 text-base font-bold bg-ember-600 hover:bg-ember-500 text-white flex items-center justify-center gap-2 transition disabled:opacity-50"
+ className="w-full py-4 text-base font-bold bg-brand-600 hover:bg-brand-500 text-white flex items-center justify-center gap-2 transition disabled:opacity-50"
  >
  {submitting ? (
  <>

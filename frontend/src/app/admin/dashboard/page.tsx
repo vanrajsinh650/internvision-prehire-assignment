@@ -142,7 +142,7 @@ export default function AdminDashboardPage() {
  <FadeIn delay={0.1} direction="up">
  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 glass-card p-6 border border-ink-800">
  <div className="flex items-center gap-3">
- <div className="w-10 h-10 bg-ember-600/20 text-ember-400 flex items-center justify-center border border-ember-500/30">
+ <div className="w-10 h-10 bg-brand-600/20 text-brand-400 flex items-center justify-center border border-brand-500/30">
  <Shield className="w-5 h-5"/>
  </div>
  <div>
@@ -177,12 +177,12 @@ export default function AdminDashboardPage() {
  <div className="glass-card p-6 border border-ink-800 space-y-2">
  <div className="flex items-center justify-between text-ink-400">
  <span className="text-xs font-medium">Total Applicants</span>
- <Users className="w-4 h-4 text-ember-400"/>
+ <Users className="w-4 h-4 text-brand-400"/>
  </div>
  <div className="text-2xl font-black text-white">
  {stats ? stats.total_applications :"..."}
  </div>
- <div className="text-[11px] text-ember-400 font-medium">Internship Applications</div>
+ <div className="text-[11px] text-brand-400 font-medium">Internship Applications</div>
  </div>
 
  <div className="glass-card p-6 border border-ink-800 space-y-2">
@@ -214,7 +214,7 @@ export default function AdminDashboardPage() {
  <button
  onClick={() => setActiveTab("overview")}
  className={`px-4 py-2 text-xs font-semibold transition ${
- activeTab ==="overview"?"bg-ember-600 text-white":"text-ink-400 hover:text-white hover:bg-ink-900"
+ activeTab ==="overview"?"bg-brand-600 text-white":"text-ink-400 hover:text-white hover:bg-ink-900"
  }`}
  >
  Overview
@@ -222,7 +222,7 @@ export default function AdminDashboardPage() {
  <button
  onClick={() => setActiveTab("applications")}
  className={`px-4 py-2 text-xs font-semibold transition ${
- activeTab ==="applications"?"bg-ember-600 text-white":"text-ink-400 hover:text-white hover:bg-ink-900"
+ activeTab ==="applications"?"bg-brand-600 text-white":"text-ink-400 hover:text-white hover:bg-ink-900"
  }`}
  >
  Internship Applicants ({stats?.total_applications || 0})
@@ -230,7 +230,7 @@ export default function AdminDashboardPage() {
  <button
  onClick={() => setActiveTab("payments")}
  className={`px-4 py-2 text-xs font-semibold transition ${
- activeTab ==="payments"?"bg-ember-600 text-white":"text-ink-400 hover:text-white hover:bg-ink-900"
+ activeTab ==="payments"?"bg-brand-600 text-white":"text-ink-400 hover:text-white hover:bg-ink-900"
  }`}
  >
  Payments History ({stats?.total_payments || 0})
@@ -255,7 +255,7 @@ export default function AdminDashboardPage() {
  placeholder="Search name, email, college..."
  value={appsSearch}
  onChange={(e) => { setAppsSearch(e.target.value); setAppsPage(1); }}
- className="w-full bg-ink-900 border border-ink-700/80 pl-9 pr-3 py-1.5 text-xs text-white focus:outline-none focus:border-ember-500"
+ className="w-full bg-ink-900 border border-ink-700/80 pl-9 pr-3 py-1.5 text-xs text-white focus:outline-none focus:border-brand-500"
  />
  </div>
 
@@ -296,7 +296,7 @@ export default function AdminDashboardPage() {
  {loadingApps ? (
  <tr>
  <td colSpan={6} className="text-center py-8">
- <Loader2 className="w-6 h-6 animate-spin mx-auto text-ember-500"/>
+ <Loader2 className="w-6 h-6 animate-spin mx-auto text-brand-500"/>
  </td>
  </tr>
  ) : appsData.items.length === 0 ? (
@@ -325,7 +325,7 @@ export default function AdminDashboardPage() {
  <td className="px-3 py-2">
  <div className="flex flex-wrap gap-1 max-w-xs">
  {app.skills.map((skill) => (
- <span key={skill} className="px-2 py-0.5 rounded text-[10px] bg-ember-500/10 text-ember-300 border border-ember-500/20">
+ <span key={skill} className="px-2 py-0.5 rounded text-[10px] bg-brand-500/10 text-brand-300 border border-brand-500/20">
  {skill}
  </span>
  ))}
@@ -388,7 +388,7 @@ export default function AdminDashboardPage() {
  placeholder="Search order ID, payment ID..."
  value={pmtSearch}
  onChange={(e) => { setPmtSearch(e.target.value); setPmtPage(1); }}
- className="w-full bg-ink-900 border border-ink-700/80 pl-9 pr-3 py-1.5 text-xs text-white focus:outline-none focus:border-ember-500"
+ className="w-full bg-ink-900 border border-ink-700/80 pl-9 pr-3 py-1.5 text-xs text-white focus:outline-none focus:border-brand-500"
  />
  </div>
 
@@ -428,7 +428,7 @@ export default function AdminDashboardPage() {
  {loadingPayments ? (
  <tr>
  <td colSpan={6} className="text-center py-8">
- <Loader2 className="w-6 h-6 animate-spin mx-auto text-ember-500"/>
+ <Loader2 className="w-6 h-6 animate-spin mx-auto text-brand-500"/>
  </td>
  </tr>
  ) : paymentsData.items.length === 0 ? (

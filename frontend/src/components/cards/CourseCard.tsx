@@ -14,11 +14,11 @@ export function CourseCard({ course }: CourseCardProps) {
  return (
  <motion.div 
  whileHover={{ y: -4 }}
- className="glass-card p-6 flex flex-col justify-between hover:border-ember-500/50 transition group h-full"
+ className="glass-card p-6 flex flex-col justify-between hover:border-brand-500/50 transition group h-full"
  >
  <div className="space-y-4">
  <div className="flex items-center justify-between text-xs">
- <span className="px-3 py-1 font-medium bg-ember-500/10 text-ember-400 border border-ember-500/20 flex items-center gap-1">
+ <span className="px-3 py-1 font-medium bg-brand-500/10 text-brand-400 border border-brand-500/20 flex items-center gap-1">
  <Signal className="w-3 h-3"/>
  {course.level}
  </span>
@@ -28,7 +28,7 @@ export function CourseCard({ course }: CourseCardProps) {
  </span>
  </div>
 
- <h3 className="text-xl font-bold text-white group-hover:text-ember-400 transition leading-snug">
+ <h3 className="text-xl font-bold text-white group-hover:text-brand-400 transition leading-snug">
  {course.title}
  </h3>
 
@@ -55,7 +55,7 @@ export function CourseCard({ course }: CourseCardProps) {
 
  <Link
  href={`/courses/${course.slug}`}
- className="px-4 py-2.5 text-xs font-semibold bg-ember-600 hover:bg-ember-500 text-white flex items-center gap-1 transition shadow-ember-600/20"
+ className="px-4 py-2.5 text-xs font-semibold bg-brand-600 hover:bg-brand-500 text-white flex items-center gap-1 transition shadow-brand-600/20"
  >
  View Syllabus
  <ArrowRight className="w-3.5 h-3.5"/>

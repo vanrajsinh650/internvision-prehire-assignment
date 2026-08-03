@@ -61,7 +61,7 @@ export default function CoursesPage() {
  placeholder="Search courses or technologies..."
  value={search}
  onChange={(e) => setSearch(e.target.value)}
- className="w-full bg-ink-900/80 border border-ink-700/80 pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-ember-500 transition"
+ className="w-full bg-ink-900/80 border border-ink-700/80 pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 transition"
  />
  </div>
 
@@ -71,7 +71,7 @@ export default function CoursesPage() {
  <select
  value={levelFilter}
  onChange={(e) => setLevelFilter(e.target.value)}
- className="bg-ink-900/80 border border-ink-700/80 px-4 py-2.5 text-sm text-ink-200 focus:outline-none focus:border-ember-500 transition w-full md:w-auto"
+ className="bg-ink-900/80 border border-ink-700/80 px-4 py-2.5 text-sm text-ink-200 focus:outline-none focus:border-brand-500 transition w-full md:w-auto"
  >
  <option value="all">All Levels</option>
  <option value="Beginner">Beginner</option>
@@ -84,7 +84,7 @@ export default function CoursesPage() {
 
  {loading ? (
  <div className="flex justify-center items-center py-24">
- <Loader2 className="w-8 h-8 text-ember-500 animate-spin"/>
+ <Loader2 className="w-8 h-8 text-brand-500 animate-spin"/>
  </div>
  ) : filteredCourses.length === 0 ? (
  <div className="glass-card p-12 text-center text-ink-400 space-y-2">

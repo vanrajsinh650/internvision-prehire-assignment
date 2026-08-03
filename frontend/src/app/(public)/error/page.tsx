@@ -28,7 +28,7 @@ function ErrorContent() {
  <div className="flex items-center justify-center gap-4">
  <Link
  href="/courses"
- className="px-6 py-3 font-semibold bg-ember-600 hover:bg-ember-500 text-white flex items-center gap-2 transition"
+ className="px-6 py-3 font-semibold bg-brand-600 hover:bg-brand-500 text-white flex items-center gap-2 transition"
  >
  <RefreshCw className="w-4 h-4"/> Try Again
  </Link>

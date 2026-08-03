@@ -27,7 +27,7 @@ export default function ContactPage() {
  <div className="space-y-6">
  <div className="glass-card p-6 space-y-4">
  <div className="flex items-center gap-3">
- <div className="w-10 h-10 bg-ember-600/20 text-ember-400 flex items-center justify-center">
+ <div className="w-10 h-10 bg-brand-600/20 text-brand-400 flex items-center justify-center">
  <Mail className="w-5 h-5"/>
  </div>
  <div>
@@ -84,7 +84,7 @@ export default function ContactPage() {
  placeholder="John Doe"
  value={formData.name}
  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
- className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-ember-500"
+ className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500"
  />
  </div>
  <div className="space-y-1.5">
@@ -95,7 +95,7 @@ export default function ContactPage() {
  placeholder="john@example.com"
  value={formData.email}
  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
- className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-ember-500"
+ className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500"
  />
  </div>
  </div>
@@ -108,7 +108,7 @@ export default function ContactPage() {
  placeholder="Inquiry regarding 3-Month Internship"
  value={formData.subject}
  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
- className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-ember-500"
+ className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500"
  />
  </div>
 
@@ -120,13 +120,13 @@ export default function ContactPage() {
  placeholder="Write your message here..."
  value={formData.message}
  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
- className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-ember-500"
+ className="w-full bg-ink-900 border border-ink-700/80 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500"
  />
  </div>
 
  <button
  type="submit"
- className="w-full py-3.5 font-bold bg-ember-600 hover:bg-ember-500 text-white shadow-ember-600/30 flex items-center justify-center gap-2 transition"
+ className="w-full py-3.5 font-bold bg-brand-600 hover:bg-brand-500 text-white shadow-brand-600/30 flex items-center justify-center gap-2 transition"
  >
  <Send className="w-4 h-4"/> Send Message
  </button>
