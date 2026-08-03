@@ -8,10 +8,11 @@ export default function Footer() {
  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
  <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
  <div className="space-y-4">
- <Link href="/"className="flex items-center gap-2 font-bold text-lg text-white">
+ <Link href="/"className="flex items-center gap-3 font-bold text-lg text-white">
  <div className="bg-white p-1 rounded-md inline-flex">
  <Image src="/logo.jpg" alt="InternVision Logo" width={140} height={36} className="h-6 w-auto object-contain" />
  </div>
+ <span>InternVision <span className="text-brand-400">Tech</span></span>
  </Link>
  <p className="text-ink-400 text-xs leading-relaxed">
  Empowering students with industry-grade software engineering bootcamps, hands-on internships, and career placement mentorship.
